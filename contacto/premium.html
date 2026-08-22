@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CONTACTO · Quiropráctica y Pilates en El Prat — Cuidamos tu cuerpo, con manos y tiempo</title>
+<meta name="description" content="Cuidado cercano y sin prisa en El Prat de Llobregat. Quiropráctica y Pilates bajo un mismo techo. Reserva tu primera sesión.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171613; --body:#4C4A45; --muted:#8C8A84;
+    --line:#E8E7E3; --surface:#FFFFFF; --bg:#F7F6F4; --bg2:#EFEEEB;
+    --wood:#1A1A18; --wood-soft:#8E8B85; --niebla:#9AA0A2; --niebla-deep:#5F6163;
+    --led:#F4E7CE;            /* único acento cálido = luz */
+    --led-glow:#F0D49A;
+    --sans:'Montserrat',system-ui,sans-serif; --body-f:'Open Sans',system-ui,sans-serif;
+    --r:14px; --r-lg:24px;
+    --sh-sm:0 1px 2px rgba(28,27,25,.05); --sh:0 12px 34px rgba(28,27,25,.09); --sh-lg:0 30px 70px rgba(28,27,25,.14);
+    --shell:56px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--body);font-family:var(--body-f);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--sans);color:var(--ink);letter-spacing:-.01em;line-height:1.12;font-weight:700}
+  em{font-style:normal;color:var(--niebla-deep)}
+  a{color:inherit}
+  img,video{max-width:100%;display:block}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--wood)}
+
+  #top{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--wood-soft),var(--wood));z-index:120;transition:width .1s linear}
+
+  /* dust particles */
+  #dust{position:fixed;inset:0;z-index:35;pointer-events:none}
+
+  /* nav */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+       padding:18px clamp(20px,5vw,44px);transition:background .35s,box-shadow .35s,padding .35s}
+  .nav.scrolled{background:rgba(246,243,238,.86);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding-top:12px;padding-bottom:12px}
+  .nav::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;background:linear-gradient(180deg,rgba(251,250,248,.92),rgba(251,250,248,0));z-index:-1;opacity:1;transition:opacity .35s;pointer-events:none}
+  .nav.scrolled::before{opacity:0}
+  .nav.on-dark:not(.scrolled)::before{background:linear-gradient(180deg,rgba(12,11,10,.55),rgba(12,11,10,0))}
+  .nav.on-dark:not(.scrolled) .brand,.nav.on-dark:not(.scrolled) .navlinks a:not(.cta){color:#fff}
+  .brand{font-family:var(--sans);font-size:19px;letter-spacing:.14em;color:var(--ink);text-decoration:none;transition:color .35s}
+  .brand b{font-weight:800}.brand span{font-weight:300}
+  .navlinks{display:flex;align-items:center;gap:26px}
+  .navlinks a:not(.cta){font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink);text-decoration:none;transition:color .2s}
+  .navlinks a:not(.cta):hover{color:var(--wood)}
+  .cta{font-family:var(--sans);font-size:13px;font-weight:600;color:#fff;background:var(--wood);padding:11px 20px;border-radius:999px;text-decoration:none;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s,background .2s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(23,22,19,.28);background:#000}
+  @media(max-width:820px){.navlinks a:not(.cta){display:none}}
+
+  /* dorsal LED impulse (el nervio que recorre la web) */
+  #spine{position:fixed;top:0;left:0;width:var(--shell);height:100vh;z-index:40;pointer-events:none}
+  #spine svg{width:100%;height:100%;overflow:visible}
+  @media(max-width:820px){:root{--shell:22px}#spine{opacity:.7}}
+
+  section{position:relative;padding-left:var(--shell)}
+  .pad{padding-top:clamp(70px,10vw,120px);padding-bottom:clamp(70px,10vw,120px)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .sec-head{max-width:640px;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(28px,4.2vw,46px);margin:16px 0 14px}
+  .sec-head p{font-size:clamp(16px,1.5vw,18px);color:var(--body)}
+
+  /* ============ HERO · EL ORIGEN (blanco + LEDs naciendo) ============ */
+  #hero{min-height:100vh;position:relative;display:flex;align-items:center;background:#FBFAF8;overflow:hidden;padding-left:var(--shell)}
+  /* foto de la pared que se revela */
+  #hero .reveal-photo{position:absolute;right:0;top:0;bottom:0;width:52%;z-index:1;overflow:hidden;
+       -webkit-mask:linear-gradient(90deg,transparent,#000 18%);mask:linear-gradient(90deg,transparent,#000 18%);opacity:0;animation:fadein 1.6s 1s forwards}
+  #hero .reveal-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:kbslow 18s ease-in-out infinite alternate}
+  @keyframes kbslow{to{transform:scale(1.16)}}
+  @keyframes fadein{to{opacity:1}}
+  #hero .hero-copy{position:relative;z-index:3;max-width:640px;padding:0 clamp(20px,5vw,40px)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero-copy .over{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wood);margin-bottom:22px;opacity:0;transform:translateY(16px);animation:rise 1s .5s forwards}
+  .hero-copy .over::before{content:"";width:26px;height:1px;background:var(--wood)}
+  /* ubicación reubicada bajo el CTA: discreta (gris) con el glifo de dirección, sin pin ni rayita */
+  #hero .hero-copy .over{margin:26px 0 0;animation-delay:1.35s;color:var(--muted);font-weight:500;letter-spacing:.12em;gap:7px}
+  #hero .hero-copy .over::before{content:"◷";width:auto;height:auto;background:none;color:inherit;font-size:1.05em}
+  .hero-copy h1{font-size:clamp(42px,6.4vw,84px);font-weight:700;line-height:1.0;margin-bottom:22px;color:var(--ink);opacity:0;transform:translateY(28px);animation:rise 1.1s .7s forwards}
+  .hero-copy .lead{font-size:clamp(17px,1.7vw,21px);color:var(--body);max-width:40ch;margin-bottom:32px;opacity:0;transform:translateY(24px);animation:rise 1.1s .95s forwards}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;opacity:0;transform:translateY(20px);animation:rise 1.1s 1.15s forwards}
+  .btn{font-family:var(--sans);font-size:15px;font-weight:600;padding:15px 26px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+  .btn-main{background:var(--wood);color:#fff;box-shadow:var(--sh)}
+  .btn-main:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(23,22,19,.3);background:#000}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--wood);color:var(--wood);transform:translateY(-3px)}
+  .scrollcue{display:none}
+  .scrollcue .m{width:20px;height:32px;border:1.5px solid var(--muted);border-radius:11px;position:relative}
+  .scrollcue .m::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:6px;border-radius:2px;background:var(--wood);transform:translateX(-50%);animation:cue 1.7s ease-in-out infinite}
+  @keyframes cue{0%,100%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}70%{opacity:0;transform:translate(-50%,10px)}}
+  @media(max-width:820px){
+    /* HERO MÓVIL: foto de fondo COMPLETA (sin recortar) que se disuelve, con el texto SUBIDO y superpuesto */
+    #hero{min-height:0;display:block;position:relative;padding:35vh 0 clamp(36px,9vw,54px)}
+    #hero .reveal-photo{position:absolute;left:0;top:0;bottom:auto;width:100%;height:62vh;opacity:1;animation:none;-webkit-mask:none;mask:none;z-index:1}
+    #hero .reveal-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,#FBFAF8 68%)}
+    #hero .hero-copy{position:relative;z-index:3;margin:0;background:none;padding:0 20px 0 calc(var(--shell) + 20px);max-width:100%} /* alineado con el margen izquierdo del resto de la web */
+    .scrollcue{display:none}
+    #hero .hero-copy h1{font-size:clamp(34px,8.6vw,46px)}
+    #hero .hero-copy h1 em{display:block}
+    .nav .cta{display:none}          /* quita el "Reserva tu sesión" repetido arriba en móvil */
+    .stage .sticky,#destino .sticky{margin:0 14px;top:5vh;height:82vh}
+  }
+
+  /* === web: la columna vertebral arranca BAJO el logo + el hero a la derecha === */
+  @media(min-width:821px){
+    #spine{left:16px;top:56px;height:calc(100vh - 56px)} /* eje ≈ x44 (bajo CONTACTO) y arranca debajo del logo, no arriba del todo */
+    #hero .hero-copy{margin-left:clamp(44px,5vw,100px)}   /* titular a la derecha, con aire */
+  }
+
+  /* ============ CINEMATIC STAGE (living photo · scroll driven) ============ */
+  .stage{position:relative;height:122vh;padding-left:0;margin-left:var(--shell)}
+  .stage.tall{height:134vh}
+  .stage .sticky{position:sticky;top:7vh;height:86vh;overflow:hidden;background:#111;margin:0 clamp(16px,4vw,54px);border-radius:var(--r-lg);box-shadow:var(--sh-lg)}
+  .stage .shot{position:absolute;inset:0;will-change:transform,filter;opacity:0;transition:opacity 1.2s ease}
+  .stage.seen .shot,#destino.seen .shot{opacity:1}
+  .stage .shot img{width:100%;height:100%;object-fit:cover}
+  .stage .grain-veil{position:absolute;inset:0;pointer-events:none}
+  .stage.left .grain-veil{background:linear-gradient(90deg,rgba(18,16,14,.72),rgba(18,16,14,.15) 55%,transparent)}
+  .stage.center .grain-veil{background:radial-gradient(120% 90% at 50% 55%,transparent 28%,rgba(18,16,14,.62))}
+  .stage.bottom .grain-veil{background:linear-gradient(0deg,rgba(18,16,14,.78),rgba(18,16,14,.1) 60%,transparent)}
+  .stage .cap{position:absolute;inset:0;display:flex;align-items:center;z-index:3;color:#fff}
+  .stage.center .cap{justify-content:center;text-align:center}
+  .stage.bottom .cap{align-items:flex-end;padding-bottom:12vh}
+  .stage .cap .in{max-width:620px;padding:0 clamp(24px,7vw,90px)}
+  .stage.center .cap .in{margin:0 auto}
+  .stage .cap .eyebrow{color:var(--wood-soft)}
+  .stage .cap h2{color:#fff;font-weight:400;font-size:clamp(28px,4.8vw,54px);line-height:1.14;margin:14px 0 12px;letter-spacing:-.01em}
+  .stage .cap h2 b{font-weight:700}
+  .stage .cap p{color:rgba(255,255,255,.85);font-size:clamp(16px,1.6vw,19px);max-width:44ch}
+  .stage.center .cap p{margin:0 auto}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chips span{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em;color:#fff;
+       padding:8px 15px;border:1px solid rgba(255,255,255,.34);border-radius:999px;background:rgba(255,255,255,.08);
+       backdrop-filter:blur(4px);opacity:0;transform:translateY(12px);animation:chipin .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.5s + var(--i)*.16s)}
+  @keyframes chipin{to{opacity:1;transform:none}}
+  /* escena estantería: encuadre alto (sin cubos) + más luz */
+  #frase .shot img{object-position:50% 24%;filter:brightness(.9) contrast(1.08) saturate(1.03)}
+  #frase .grain-veil{background:radial-gradient(120% 100% at 50% 44%,transparent 22%,rgba(14,12,10,.62) 70%),linear-gradient(0deg,rgba(12,10,9,.55),transparent 55%)}
+  .rotline{font-family:var(--sans);font-size:clamp(14px,1.5vw,17px);font-weight:500;letter-spacing:.02em;color:#fff;margin-top:22px;text-shadow:0 2px 16px rgba(0,0,0,.9)}
+  .rotline #rotword{color:#fff;font-weight:700;transition:opacity .4s;text-shadow:0 0 22px rgba(255,205,140,.85),0 2px 12px rgba(0,0,0,.95);border-bottom:2px solid var(--wood-soft);padding-bottom:1px}
+
+  /* LED overlay que respira + impulso viajero sobre la foto */
+  .ledwall{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.0}
+  .ledwall.on{opacity:1}
+
+  /* la frase que se dibuja sola */
+  .draw{position:relative;display:inline-block}
+  .draw .txt{background:linear-gradient(90deg,#fff 50%,rgba(255,255,255,0) 50%);background-size:200% 100%;background-position:100% 0;
+       -webkit-background-clip:text;background-clip:text;color:transparent}
+  .draw .pen{position:absolute;top:0;bottom:0;width:2px;background:var(--led);box-shadow:0 0 10px var(--led-glow);opacity:0}
+
+  /* ===== SCENE · foto enmarcada dentro de sección normal (web = móvil, separadas) ===== */
+  .scene .frame{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:16/10;background:#14110e}
+  .scene .frame>img{width:100%;height:100%;object-fit:cover;display:block}
+  .scene.reformers .frame>img{object-position:50% 46%}
+  .scene.frase .frame>img{object-position:50% 28%;filter:brightness(.92) contrast(1.06)}
+  .scene .scrim{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .scene.reformers .scrim{background:linear-gradient(90deg,rgba(14,12,10,.8),rgba(14,12,10,.3) 52%,transparent 78%)}
+  .scene.frase .scrim{background:radial-gradient(120% 100% at 50% 46%,transparent 18%,rgba(12,10,9,.66) 74%),linear-gradient(0deg,rgba(12,10,9,.5),transparent 55%)}
+  .scene-cap{position:absolute;z-index:2;inset:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(26px,5vw,64px);max-width:640px;color:#fff}
+  .scene-cap.center{align-items:center;text-align:center;max-width:none;width:100%}
+  .scene-cap .eyebrow{color:var(--wood-soft)}
+  .scene-cap h2{color:#fff;font-weight:400;font-size:clamp(26px,3.4vw,46px);line-height:1.14;margin:12px 0 12px;letter-spacing:-.01em;text-shadow:0 2px 18px rgba(0,0,0,.4)}
+  .scene-cap h2 b{font-weight:700}
+  .scene-cap p{color:rgba(255,255,255,.9);font-size:clamp(15px,1.5vw,18px);max-width:42ch;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+  .scene-cap .phrase{font-weight:300;text-shadow:0 3px 22px rgba(0,0,0,.6);font-size:clamp(26px,3.8vw,50px)}
+  @media(max-width:820px){
+    .scene .frame{aspect-ratio:4/5}
+    .scene-cap{padding:22px}
+    .scene-cap h2{font-size:clamp(21px,5.4vw,30px)}
+    .scene-cap p{font-size:14.5px}
+    .scene-cap .phrase{font-size:clamp(23px,6.4vw,34px)}
+    .scene.reformers .scrim{background:linear-gradient(0deg,rgba(14,12,10,.84),rgba(14,12,10,.2) 60%,transparent)}
+    .scene.reformers .scene-cap{justify-content:flex-end;max-width:none}
+  }
+
+  /* ============ content blocks (claros) ============ */
+  .idgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .idcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sh-sm);transition:transform .3s,box-shadow .3s}
+  .idcard:hover{transform:translateY(-6px);box-shadow:var(--sh)}
+  .idcard .ic{width:40px;height:40px;border-radius:12px;background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--wood);margin-bottom:16px}
+  .idcard .ic svg{width:22px;height:22px}
+  .idcard h3{font-size:17px;margin-bottom:6px}.idcard p{font-size:14.5px;color:var(--body)}
+  @media(max-width:820px){.idgrid{grid-template-columns:1fr}}
+
+  .svc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;box-shadow:var(--sh-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
+  .card:hover{transform:translateY(-8px);box-shadow:var(--sh);border-color:var(--wood-soft)}
+  .card .ic{width:46px;height:46px;color:var(--wood);margin-bottom:18px}.card .ic svg{width:100%;height:100%}
+  .card h3{font-size:18px;margin-bottom:8px}.card p{font-size:15px;color:var(--body)}
+  @media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+  #pilates{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+  .pil{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,60px);align-items:center}
+  .pil .copy .eyebrow{color:var(--niebla-deep)}
+  .pil .copy h2{font-size:clamp(28px,3.8vw,42px);margin:14px 0 16px}.pil .copy h2 em{color:var(--niebla-deep)}
+  .pil .copy p{margin-bottom:22px}
+  .pil-feats{list-style:none;margin:0 0 28px}
+  .pil-feats li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid rgba(23,22,19,.1);font-size:15px}
+  .pil-feats .chk{color:var(--niebla-deep);font-weight:700}
+  .pil .btn-main{background:var(--wood)}.pil .btn-main:hover{background:#000;box-shadow:0 18px 40px rgba(23,22,19,.3)}
+  .pil .photo{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh);aspect-ratio:4/5;background:#26241f}
+  .pil .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.7s ease-in-out,transform 8s ease}
+  .pil .photo img.on{opacity:1;transform:scale(1)}
+  .pilcap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;
+       background:radial-gradient(120% 90% at 50% 50%,rgba(16,14,12,.28),rgba(16,14,12,.58));color:#fff}
+  .pilcap span{transition:opacity .55s}
+  .pilmsg{display:block;max-width:20ch;font-family:var(--sans);font-weight:800;text-transform:uppercase;font-size:clamp(20px,2.7vw,32px);line-height:1.2;letter-spacing:.01em;text-shadow:0 3px 26px rgba(0,0,0,.6)}
+  .pilsign{margin-top:26px;font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.2em;color:#fff;
+       background:rgba(16,14,12,.42);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:9px 20px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .pilsign em{font-style:normal;font-weight:800;letter-spacing:.2em;color:var(--wood-soft)}
+  .pildots{position:absolute;top:14px;right:14px;z-index:2;display:flex;gap:6px}
+  .pildots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s,width .3s}
+  .pildots i.on{background:#fff;width:18px;border-radius:4px}
+  @media(max-width:900px){.pil{grid-template-columns:1fr}}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .step{padding:28px 22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm)}
+  .step .n{font-family:var(--sans);font-weight:800;font-size:15px;color:#fff;background:var(--wood);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step h3{font-size:17px;margin-bottom:6px}.step p{font-size:14px;color:var(--body)}
+  @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+  /* ============ CIERRE · LA FACHADA COMO DESTINO ============ */
+  #destino{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+  .fin{display:grid;grid-template-columns:1fr 0.86fr;gap:clamp(32px,5vw,72px);align-items:center}
+  .fin-copy .eyebrow{color:var(--wood)}
+  .fin-copy h2{font-size:clamp(38px,5.2vw,60px);font-weight:300;letter-spacing:-.01em;margin:14px 0 18px;color:var(--ink)}
+  .fin-copy p{color:var(--body);font-size:clamp(16px,1.6vw,19px);max-width:46ch;margin-bottom:30px}
+  .fin-copy .hero-actions{opacity:1;transform:none;animation:none}
+  .fin-meta{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:28px;color:var(--muted);font-size:14px}
+  .fin-meta b{color:var(--wood)}
+  .fin-photo{position:relative}
+  .fin-frame{position:relative;aspect-ratio:4/5;border-radius:calc(var(--r-lg) + 6px);overflow:hidden;box-shadow:var(--sh-lg);transition:transform .5s ease}
+  .fin-photo:hover .fin-frame{transform:translateY(-6px)}
+  .fin-frame img{width:100%;height:100%;object-fit:cover;object-position:58% 42%;transform:scale(1.02)}
+  .fin-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,12,10,.72),rgba(14,12,10,.05) 42%,transparent);pointer-events:none}
+  .fin-tag{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;display:flex;flex-direction:column;gap:4px;
+       font-family:var(--sans);color:#fff;background:rgba(16,14,12,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 16px}
+  .fin-tag .t{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-soft)}
+  .fin-tag .a{font-size:13.5px;font-weight:500;line-height:1.4}
+  @media(max-width:820px){.fin{grid-template-columns:1fr;gap:34px}.fin-frame{aspect-ratio:3/2}.fin-frame img{object-position:58% 40%}}
+
+  /* separador-vértebra entre secciones (referencia a la columna) */
+  .vsep{display:flex;flex-direction:column;align-items:center;gap:9px;padding:10px 0;background:var(--bg)}
+  .vsep .ln{width:1.5px;height:26px;border-radius:2px}
+  .vsep .ln.top{background:linear-gradient(180deg,transparent,var(--line))}
+  .vsep .ln.bot{background:linear-gradient(180deg,var(--line),transparent)}
+  .vsep .disc{width:15px;height:5px;border-radius:3px;background:#D6D3CC;box-shadow:0 0 0 5px rgba(23,22,19,.02)}
+  .vsep .msg{font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  #pilates + .vsep,.vsep.on-alt{background:var(--bg2)}
+
+  /* FAQ */
+  #faq .sec-head{max-width:640px;margin:0 auto 44px;text-align:center}
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-sm);overflow:hidden;transition:box-shadow .3s,border-color .3s}
+  .faq[open]{box-shadow:var(--sh);border-color:var(--wood-soft)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;font-family:var(--sans);font-weight:600;font-size:clamp(15.5px,2vw,18px);color:var(--ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pl{flex:0 0 auto;width:24px;height:24px;position:relative;transition:transform .35s}
+  .faq[open] summary .pl{transform:rotate(135deg)}
+  .faq summary .pl::before,.faq summary .pl::after{content:"";position:absolute;background:var(--wood);border-radius:2px}
+  .faq summary .pl::before{left:50%;top:3px;bottom:3px;width:2px;transform:translateX(-50%)}
+  .faq summary .pl::after{top:50%;left:3px;right:3px;height:2px;transform:translateY(-50%)}
+  .faq .a{padding:0 26px 24px;color:var(--body);font-size:15.5px;line-height:1.72;max-width:66ch}
+  .faq .a b{color:var(--ink);font-weight:600}
+  .faq .a .badge{display:inline-block;margin-top:12px;font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--wood);background:var(--bg2);border-radius:999px;padding:6px 14px}
+
+  footer{background:var(--ink);color:rgba(246,243,238,.55);text-align:center;font-size:13px;padding:30px 20px 40px;padding-left:calc(var(--shell) + 20px);line-height:1.7}
+  footer b{color:#F6F3EE}
+  footer .foot-sub{font-size:12px;color:rgba(246,243,238,.4);margin-top:6px}
+  footer .foot-sub a{color:rgba(246,243,238,.72);text-decoration:none;border-bottom:1px solid rgba(246,243,238,.25);transition:color .2s}
+  footer .foot-sub a:hover{color:var(--wood-soft)}
+
+  #wa{position:fixed;right:22px;bottom:22px;z-index:110;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(37,211,102,.42);opacity:0;transform:translateY(20px) scale(.8);transition:opacity .4s,transform .4s}
+  #wa.show{opacity:1;transform:none}
+  #wa svg{width:30px;height:30px}
+
+  #pre{position:fixed;inset:0;z-index:200;background:#FBFAF8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .7s,visibility .7s}
+  #pre.done{opacity:0;visibility:hidden}
+  #pre .mk{font-family:var(--sans);font-size:20px;letter-spacing:.16em;color:var(--ink)}
+  #pre .mk b{font-weight:800}#pre .mk span{font-weight:300}
+  #pre .bar{width:180px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+  #pre .bar i{display:block;height:100%;width:0;background:var(--wood);transition:width .2s linear}
+  @media(prefers-reduced-motion:reduce){.reveal{transition:none}}
+</style>
+
+<!-- ============================================================
+     CAPA PREMIUM OSCURA — re-skin sin tocar el contenido ni el JS.
+     Mundo warm-black + hueso + beech (paleta de marca). Refuerza el
+     nervio dorsal, el polvo y añade atmósfera + viñeta + grano + cursor.
+     Ver Evolution/webkit-animado/ESTANDAR.md.
+     ============================================================ -->
+<style id="premium-dark">
+  :root{
+    --ink:#F4EFE7;            /* ahora = texto claro (antes tinta oscura) */
+    --body:#CDC4B5; --muted:#9A9284;
+    --line:rgba(255,255,255,.10);
+    --surface:rgba(255,255,255,.045);       /* card = vidrio oscuro */
+    --bg:#1A1815; --bg2:#221D17;            /* fondos profundos con tinte cálido */
+    --wood:#C9A876; --wood-soft:#D9BE92;    /* acento = beech (antes casi negro) */
+    --beech:#C9A876; --beech-deep:#8A5A2B;
+    --niebla-deep:#B9A98F;
+    --sh-sm:0 1px 2px rgba(0,0,0,.4); --sh:0 18px 44px rgba(0,0,0,.5); --sh-lg:0 40px 90px rgba(0,0,0,.6);
+  }
+  body{background:var(--bg);color:var(--body)}
+  em{color:var(--beech)}
+
+  /* Capas globales apiladas */
+  #grain{position:fixed;inset:0;z-index:58;pointer-events:none;opacity:.05;mix-blend-mode:overlay}
+  #vign{position:fixed;inset:0;z-index:57;pointer-events:none;
+    background:radial-gradient(135% 105% at 50% 40%,transparent 52%,rgba(0,0,0,.6) 100%)}
+  #atmo{position:fixed;inset:0;z-index:34;pointer-events:none}
+  #dust{opacity:.9}
+
+  /* Nervio dorsal MUCHO más visible (era casi invisible en blanco) */
+  #spineBase{stroke:rgba(201,168,118,.20)!important;stroke-width:2.4!important}
+  #spineLive{stroke:var(--beech)!important;stroke-width:3.2!important;filter:drop-shadow(0 0 6px rgba(201,168,118,.55))}
+
+  /* Nav */
+  .nav.scrolled{background:rgba(18,16,13,.82);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  .nav::before{background:linear-gradient(180deg,rgba(12,11,10,.8),rgba(12,11,10,0))}
+  .brand{color:var(--ink)} .navlinks a:not(.cta){color:var(--ink)}
+  .cta{background:var(--beech);color:#1A1512}
+  .cta:hover{background:#D9BE92}
+
+  /* Hero */
+  #hero{background:#141210}
+  #hero .reveal-photo{-webkit-mask:linear-gradient(90deg,transparent,#000 22%);mask:linear-gradient(90deg,transparent,#000 22%)}
+  #hero .reveal-photo::before{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg,#141210 2%,transparent 40%),linear-gradient(0deg,rgba(20,18,16,.5),transparent 45%)}
+  .hero-copy .over{color:var(--beech)} .hero-copy .over::before{background:var(--beech)}
+  .hero-copy h1{color:var(--ink)} .hero-copy .lead{color:var(--body)}
+
+  /* Botones */
+  .btn-main{background:var(--beech);color:#1A1512;box-shadow:var(--sh)}
+  .btn-main:hover{background:#D9BE92;box-shadow:0 18px 42px rgba(201,168,118,.28)}
+  .btn-ghost{color:var(--ink);border:1.5px solid rgba(255,255,255,.22)}
+  .btn-ghost:hover{border-color:var(--beech);color:var(--beech)}
+
+  /* Cabeceras de sección */
+  .sec-head h2,.svc-head h2,.pil .copy h2,.fin-copy h2,.scene-cap h2,h1,h2,h3,h4{color:var(--ink)}
+  .sec-head p{color:var(--body)} .eyebrow{color:var(--beech)}
+
+  /* Tarjetas = vidrio oscuro con acento beech */
+  .idcard,.card,.step,.faq{background:var(--surface);border:1px solid var(--line);backdrop-filter:blur(6px)}
+  .idcard:hover,.card:hover{border-color:rgba(201,168,118,.5);box-shadow:var(--sh)}
+  .idcard .ic{background:rgba(201,168,118,.12);color:var(--beech)}
+  .card .ic{color:var(--beech)} .idcard h3,.card h3,.step h3{color:var(--ink)}
+  .idcard p,.card p,.step p{color:var(--body)}
+  .step .n{background:var(--beech);color:#1A1512}
+
+  /* Pilates */
+  #pilates{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+  .pil .copy h2 em{color:var(--beech)} .pil-feats li{border-bottom:1px solid rgba(255,255,255,.1);color:var(--body)}
+  .pil-feats .chk{color:var(--beech)} .pil-feats b{color:var(--ink)}
+  .pil .btn-main{background:var(--beech)} .pil .btn-main:hover{background:#D9BE92}
+
+  /* Método / destino / faq bg */
+  #destino{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+  .fin-copy p{color:var(--body)} .fin-meta{color:var(--muted)} .fin-meta b{color:var(--beech)}
+  .faq[open]{border-color:rgba(201,168,118,.5);box-shadow:var(--sh)}
+  .faq summary{color:var(--ink)} .faq .a{color:var(--body)} .faq .a b{color:var(--ink)}
+  .faq summary .pl::before,.faq summary .pl::after{background:var(--beech)}
+  .faq .a .badge{color:var(--beech);background:rgba(201,168,118,.12)}
+
+  /* Separadores-vértebra: que brillen */
+  .vsep,#pilates + .vsep,.vsep.on-alt{background:transparent}
+  .vsep .disc{background:var(--beech);box-shadow:0 0 12px rgba(201,168,118,.6),0 0 0 5px rgba(201,168,118,.06)}
+  .vsep .ln.top{background:linear-gradient(180deg,transparent,rgba(201,168,118,.4))}
+  .vsep .ln.bot{background:linear-gradient(180deg,rgba(201,168,118,.4),transparent)}
+  .vsep .msg{color:var(--muted)}
+
+  /* Footer y preloader */
+  footer{background:#100E0C}
+  #pre{background:#141210} #pre .mk{color:var(--ink)}
+  #pre .bar{background:rgba(255,255,255,.12)} #pre .bar i{background:var(--beech)}
+  #top{background:linear-gradient(90deg,var(--beech-deep),var(--beech))}
+
+  /* Escenas enmarcadas: un pelín más de contraste con el mundo oscuro */
+  .scene .frame,.pil .photo,.fin-frame{box-shadow:var(--sh-lg),0 0 0 1px rgba(255,255,255,.06)}
+
+  /* HERO MÓVIL premium: la foto funde a NEGRO (no a hueso) y sin la sombra lateral de escritorio */
+  @media(max-width:820px){
+    #hero .reveal-photo::before{display:none}
+    #hero .reveal-photo::after{background:linear-gradient(180deg,transparent 30%,#141210 68%)}
+  }
+</style>
+</head>
+<body>
+
+<div id="pre"><div class="mk"><b>CON</b><span>TACTO</span></div><div class="bar"><i id="prebar"></i></div></div>
+<div id="top"></div>
+<canvas id="dust"></canvas>
+<!-- capas premium apiladas -->
+<svg id="grain" width="100%" height="100%" aria-hidden="true"><filter id="grain-pf"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain-pf)"/></svg>
+<div id="vign"></div>
+<canvas id="atmo"></canvas>
+
+<!-- dorsal LED impulse -->
+<div id="spine" aria-hidden="true">
+  <svg viewBox="0 0 56 1000" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CFC8BC"/><stop offset="100%" stop-color="#A7A29A"/></linearGradient>
+      <filter id="sglow" x="-160%" y="-160%" width="420%" height="420%"><feGaussianBlur stdDeviation="3.6"/></filter>
+    </defs>
+    <path id="spineBase" d="M28,16 C40,180 16,340 28,500 C40,660 16,820 28,984" fill="none" stroke="#E6DED2" stroke-width="2.2" stroke-linecap="round"/>
+    <path id="spineLive" d="M28,16 C40,180 16,340 28,500 C40,660 16,820 28,984" fill="none" stroke="url(#sg)" stroke-width="2.6" stroke-linecap="round"/>
+    <circle id="vglow" r="11" fill="#EFD29A" filter="url(#sglow)" opacity="0"/>
+    <g id="spineNodes"></g>
+    <circle id="spark" r="6" fill="#FFE7BE" filter="url(#sglow)" opacity="0"/>
+    <circle id="sparkCore" r="2.4" fill="#FFF6E6" opacity="0"/>
+  </svg>
+</div>
+
+<nav class="nav">
+  <a class="brand" href="#hero"><b>CON</b><span>TACTO</span></a>
+  <div class="navlinks">
+    <a href="#identifica">Cómo te cuidamos</a>
+    <a href="#servicios">Quiropráctica</a>
+    <a href="#pilates">Pilates</a>
+    <a href="#destino">Contacto</a>
+    <a class="cta" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener noreferrer">Reserva tu sesión</a>
+  </div>
+</nav>
+
+<!-- ESCENA 1 · EL ORIGEN -->
+<section id="hero">
+  <div class="reveal-photo"><img src="assets/img/detalle1.webp" alt="Pared de listones de madera con luces LED del estudio Contacto"></div>
+  <div class="hero-copy">
+    <h1>Cuidamos tu cuerpo, <em>con manos y tiempo.</em></h1>
+    <p class="lead">Quiropráctica y Pilates bajo un mismo techo. Un cuidado cercano, con tiempo y con manos, para que te encuentres mejor.</p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+        Reserva tu primera sesión
+      </a>
+      <a class="btn btn-ghost" href="tel:+34611459510">Llámanos · 611 459 510</a>
+    </div>
+    <div class="over">Contacto · El Prat de Llobregat</div>
+  </div>
+  <div class="scrollcue"><span class="m"></span>Desliza</div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Respira</span><span class="ln bot"></span></div>
+
+<!-- ESCENA 2 · reformers (sección normal, foto enmarcada) -->
+<section class="scene reformers pad">
+  <div class="wrap">
+    <div class="frame reveal">
+      <img src="assets/img/pilates-sala2.webp" alt="Sala de reformers de Contacto Pilates">
+      <div class="scrim"></div>
+      <div class="scene-cap">
+        <span class="eyebrow">Bienvenido a Contacto</span>
+        <h2>Recupera el equilibrio.<br><b>Recupera el movimiento.</b></h2>
+        <p>Un espacio tranquilo en El Prat donde lo primero, siempre, son las personas.</p>
+        <div class="chips">
+          <span style="--i:0">Quiropráctica</span>
+          <span style="--i:1">Pilates en reformers</span>
+          <span style="--i:2">Grupos de 7</span>
+          <span style="--i:3">Primera visita sin prisa</span>
+          <span style="--i:4">Trato de persona a persona</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Escúchate</span><span class="ln bot"></span></div>
+
+<!-- ¿Te reconoces? -->
+<section id="identifica" class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">¿Te reconoces en esto?</span>
+      <h2>Tu cuerpo lleva tiempo <em>pidiéndote atención.</em></h2>
+      <p>No hace falta esperar a que algo te frene. Si te ves aquí, es un buen momento para cuidarte.</p>
+    </div>
+    <div class="idgrid">
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v9m0 0-3-2m3 2 3-2M6 21c1-4 3-5 6-5s5 1 6 5"/></svg></div><h3>Cargas el día en la espalda</h3><p>Las horas de trabajo y de pantalla se te acumulan en el cuello y los hombros.</p></div>
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Te cuesta arrancar</h3><p>Te levantas rígido, notas tensión y te mueves con menos soltura que antes.</p></div>
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15c3-4 5-4 8 0s5 4 8 0M4 9c3-4 5-4 8 0s5 4 8 0"/></svg></div><h3>Vives con prisa</h3><p>El estrés y el ritmo del día se te quedan en el cuerpo y quieres soltarlos.</p></div>
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 20V10m6 10V4m6 16v-7"/></svg></div><h3>Tu postura ha cambiado</h3><p>Sin darte cuenta, te encoges y te apoyas peor de lo que solías.</p></div>
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.8 11.1A9 9 0 1 1 12.9 3.2"/><path d="M9 12l2 2 5-5"/></svg></div><h3>Quieres moverte mejor</h3><p>Buscas recuperar movilidad y energía para hacer tu vida con más ligereza.</p></div>
+      <div class="idcard reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.4-7-9.5A3.5 3.5 0 0 1 12 8a3.5 3.5 0 0 1 7 2.5C19 16.6 12 21 12 21z"/></svg></div><h3>Quieres cuidarte de verdad</h3><p>Sin prisas y con alguien de confianza que te dedique el tiempo que mereces.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">El cambio empieza</span><span class="ln bot"></span></div>
+
+<!-- ESCENA 3 · estantería / frase (sección normal) -->
+<section class="scene frase pad" id="frase">
+  <div class="wrap">
+    <div class="frame reveal">
+      <img src="assets/img/filosofia.webp" alt="Estantería del estudio con material de Pilates">
+      <div class="scrim"></div>
+      <div class="scene-cap center">
+        <h2 class="phrase">El cambio se produce<br>a través del movimiento</h2>
+        <div class="rotline">Contigo · con tu cuerpo · con <span id="rotword">el cambio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Con las manos</span><span class="ln bot"></span></div>
+
+<!-- Quiropráctica -->
+<section id="servicios" class="pad">
+  <div class="wrap">
+    <div class="svc-head reveal">
+      <div><span class="eyebrow">La consulta de quiropráctica</span>
+        <h2 style="font-size:clamp(28px,4vw,44px);margin-top:14px">Un cuidado con tiempo, <em>de principio a fin.</em></h2></div>
+      <p style="max-width:34ch;color:var(--body)">Más tiempo por persona y más trabajo con las manos que la media. La columna como eje, y con ella todo tu cuerpo.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Primera visita completa</h3><p>Explicación, vídeo y chequeo. Entendemos tu cuerpo entero, con calma, antes de tocar nada.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 4v6a6 6 0 0 0 12 0V4M6 20v-4a6 6 0 0 1 12 0v4"/></svg></div><h3>El ajuste quiropráctico</h3><p>Preciso y cuidado, sobre la columna y todo el esqueleto: cervicales, hombro, rodilla y pie.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c3-4 5-4 8 0s5 4 8 0M4 17c3-4 5-4 8 0s5 4 8 0"/></svg></div><h3>Trabajo muscular</h3><p>Más manos y más minutos. Acompañamos el ajuste con un trabajo muscular amplio para que dure.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18V8m5 10V5m5 13v-7m5 7V9"/></svg></div><h3>Plan por fases</h3><p>Un cuidado ordenado y a tu ritmo, desde el inicio hasta el mantenimiento. Tú marcas el paso.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5"/><circle cx="12" cy="14" r="3"/></svg></div><h3>Recursos de apoyo</h3><p>Equipo Bemmer y ejercicios pautados según tu caso, para que el cuidado siga también en casa.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v7m-5 4 5-4 5 4M8 11h8"/></svg></div><h3>Todo el esqueleto</h3><p>La columna como centro, pero miramos el cuerpo entero. Todo está conectado.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">En movimiento</span><span class="ln bot"></span></div>
+
+<!-- Pilates -->
+<section id="pilates" class="pad">
+  <div class="wrap"><div class="pil">
+    <div class="copy reveal">
+      <span class="eyebrow">Contacto Pilates</span>
+      <h2>Cuídate también <em>en movimiento.</em></h2>
+      <p>La quiropráctica cuida tu cuerpo de forma pasiva; el Pilates lo trabaja de forma activa. Los dos buscan que te encuentres mejor.</p>
+      <ul class="pil-feats">
+        <li><span class="chk">✓</span><span><b>Reformers y grupos reducidos.</b> Máximo 7 personas por franja, con profesoras propias.</span></li>
+        <li><span class="chk">✓</span><span><b>Clase de prueba gratis.</b> Ven, pruébalo y decide, con matrícula de regalo.</span></li>
+        <li><span class="chk">✓</span><span><b>Bonos a tu medida.</b> 4, 8 o 12 clases al mes. A más días, más profundo y mejor precio por clase.</span></li>
+      </ul>
+      <a class="btn btn-main" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20probar%20una%20clase%20de%20Pilates" target="_blank" rel="noopener noreferrer">Prueba una clase gratis</a>
+    </div>
+    <div class="photo reveal" id="pilcar">
+      <img class="on" src="assets/img/reformer.webp" alt="Reformer" data-msg="Cuando trabajas con control, tu cuerpo responde. Vuelve a moverte con libertad.">
+      <img src="assets/img/pilates-sala.webp" alt="Sala" data-msg="Aquí nadie va con prisa. Solo tú, tu cuerpo y el movimiento.">
+      <div class="pilcap">
+        <span class="pilmsg" id="pilmsg">Cuando trabajas con control, tu cuerpo responde. Vuelve a moverte con libertad.</span>
+        <span class="pilsign">CON<em>TACTO</em></span>
+      </div>
+      <div class="pildots"></div>
+    </div>
+  </div></div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Paso a paso</span><span class="ln bot"></span></div>
+
+<!-- Cómo trabajamos -->
+<section id="metodo" class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Sencillo, ordenado y <em>a tu ritmo.</em></h2>
+      <p>Cuatro pasos para cuidarte sin prisa, empezando siempre por conocerte.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Escuchamos</h3><p>Nos cuentas cómo estás y qué buscas. Con tiempo, sin prisa.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Valoramos</h3><p>Primera visita con explicación, vídeo y chequeo de tu eje completo.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Cuidamos</h3><p>Ajuste y trabajo muscular, o movimiento activo en Pilates. A tu medida.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>Seguimos</h3><p>Un plan por fases y recursos para casa, para que el cambio se mantenga.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Te esperamos</span><span class="ln bot"></span></div>
+
+<!-- FINAL · LLAMADA A LA ACCIÓN + FACHADA ENMARCADA -->
+<section id="destino" class="pad">
+  <div class="wrap">
+    <div class="fin">
+      <div class="fin-copy reveal">
+        <span class="eyebrow">Empieza por conocerte</span>
+        <h2>Te esperamos.</h2>
+        <p>Ven a conocernos sin compromiso. Una primera visita con calma es la mejor forma de decidir. Estamos en el centro de El Prat de Llobregat.</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+            Reserva tu primera sesión
+          </a>
+          <a class="btn btn-ghost" href="tel:+34611459510">Llámanos · 611 459 510</a>
+        </div>
+        <div class="fin-meta">
+          <span><b>◷</b> Ctra. de la Marina, 9, Bajos · 08820 El Prat de Llobregat</span>
+          <span><b>♡</b> Trato humano, sin prisa</span>
+        </div>
+      </div>
+      <div class="fin-photo reveal">
+        <div class="fin-frame">
+          <img src="assets/img/fachada-hero.webp" alt="Fachada de Contacto en El Prat de Llobregat">
+          <div class="fin-tag">
+            <span class="t">Aquí estamos</span>
+            <span class="a">◷ Carretera de la Marina, 9, Bajos</span>
+            <span class="a">08820 El Prat de Llobregat · Barcelona</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">¿Dudas?</span><span class="ln bot"></span></div>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section id="faq" class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvemos <em>tus dudas.</em></h2>
+      <p>Lo que más nos preguntan antes de venir por primera vez.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal" open>
+        <summary>¿Qué es la quiropráctica?<span class="pl"></span></summary>
+        <div class="a">Una disciplina que cuida tu <b>sistema nervioso</b> y tu estructura, con la columna como eje. Se trabaja con las manos, sin fármacos ni cirugía, para que tu cuerpo recupere movilidad y equilibrio. En países como <b>Estados Unidos</b> es una profesión sanitaria plenamente reconocida y regulada, con formación universitaria propia —el título de <b>Doctor of Chiropractic</b>— y presente en su sistema de salud.<span class="badge">◷ Reconocida y regulada en EE. UU.</span></div>
+      </details>
+      <details class="faq reveal">
+        <summary>Cargo el día en la espalda y el cuello, ¿es para mí?<span class="pl"></span></summary>
+        <div class="a">Sí. Las horas de pantalla, la postura mantenida y el ritmo del día se acumulan en el cuerpo y te restan soltura. El ajuste quiropráctico y el trabajo muscular ayudan a que tu columna y tu cuerpo recuperen movilidad, para que <b>te encuentres mejor en tu día a día</b>.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>¿El ajuste es seguro? ¿Notaré algo brusco?<span class="pl"></span></summary>
+        <div class="a">Es un movimiento <b>preciso y cuidado</b>. Antes de tocar nada hacemos una primera visita completa, con explicación, vídeo y chequeo, para entender tu cuerpo entero. Vas comprendiendo cada paso y todo va a tu ritmo, sin prisa.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>¿Cuántas veces tengo que venir?<span class="pl"></span></summary>
+        <div class="a">Trabajamos por <b>fases</b>: primero conocerte y valorar, luego cuidar y por último mantener. Te proponemos un plan ordenado y <b>tú marcas el paso</b>. No hay dos cuerpos iguales, así que tampoco dos planes iguales.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>¿En qué se diferencia el Pilates de la quiropráctica?<span class="pl"></span></summary>
+        <div class="a">La quiropráctica cuida tu cuerpo de forma <b>pasiva</b>; el Pilates lo trabaja de forma <b>activa</b>, en reformers y grupos reducidos (máximo 7, con profesoras propias). Se complementan: los dos buscan que te muevas mejor y te encuentres bien.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>¿Puedo probar antes de decidir?<span class="pl"></span></summary>
+        <div class="a">Claro. La primera visita de quiropráctica es sin prisa, y en Pilates tienes una <b>clase de prueba gratis</b> con matrícula de regalo. Ven, pruébalo y decides tú.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-main"><b>CONTACTO</b> · Quiropráctica y Pilates · El Prat de Llobregat &nbsp;—&nbsp; Cuidamos tu cuerpo, con manos y tiempo</div>
+  <div class="foot-sub">© <span data-year></span> CONTACTO · Todos los derechos reservados.</div>
+  <div class="foot-sub">Diseño y desarrollo por <a href="https://evolution360ai.github.io/consultoria-evolution/index.html" target="_blank" rel="noopener noreferrer">Evolution SL</a></div>
+</footer>
+
+<a id="wa" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20mi%20primera%20sesi%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.7.9 3.6 1.4 5.5 1.4h.3C24.6 28.9 30 23.5 30 16.9 30 9.4 24.6 3 16 3zm7 17.1c-.3.9-1.8 1.7-2.5 1.8-.6.1-1.4.1-2.3-.1-.5-.2-1.2-.4-2.1-.8-3.7-1.6-6.1-5.3-6.3-5.6-.2-.3-1.5-2-1.5-3.8s.9-2.7 1.3-3.1c.3-.3.7-.4 1-.4h.7c.2 0 .5 0 .8.6l1.1 2.6c.1.2.2.5 0 .8l-.5.7c-.2.2-.4.5-.2.9.3.5 1.1 1.8 2.3 2.9 1.6 1.4 2.8 1.8 3.2 2 .3.1.6.1.8-.1.2-.3.9-1.1 1.2-1.4.2-.3.5-.3.8-.2l2.5 1.2c.4.2.6.3.7.4.1.3.1.9-.2 1.7z"/></svg>
+</a>
+
+<!-- capas del webkit (atmósfera + cursor propio) -->
+<script src="lib/atmosphere.js"></script>
+<script src="lib/ghost-cursor.js"></script>
+<script>
+(function(){
+  var BEECH='201,168,118';
+  if(window.Atmosphere) Atmosphere.mount({canvas:'#atmo',color:BEECH,count:64,glow:false});
+  if(window.GhostCursor) GhostCursor.mount({color:BEECH,ring:26});
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+  function smooth(x,a,b){var t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t);}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---- dorsal spine + spark ---- */
+  var live=document.getElementById('spineLive'),spark=document.getElementById('spark'),
+      sparkCore=document.getElementById('sparkCore'),nodesG=document.getElementById('spineNodes'),
+      vglow=document.getElementById('vglow');
+  var L=live.getTotalLength();live.style.strokeDasharray=L;live.style.strokeDashoffset=L;
+  /* una vértebra (disco) por sección real, alineada a su posición en la web */
+  var NS='http://www.w3.org/2000/svg';
+  var secEls=['#hero','.scene.reformers','#identifica','#frase','#servicios','#pilates','#metodo','#destino','#faq']
+      .map(function(s){return document.querySelector(s);}).filter(Boolean);
+  var nodes=[];
+  function buildNodes(){
+    while(nodesG.firstChild)nodesG.removeChild(nodesG.firstChild);
+    nodes=[];var docH=document.body.scrollHeight||1;
+    secEls.forEach(function(el){
+      var t=clamp((el.offsetTop+el.offsetHeight*0.5)/docH,0.02,0.985);
+      var p=live.getPointAtLength(L*t);
+      var r=document.createElementNS(NS,'rect');
+      r.setAttribute('width',12);r.setAttribute('height',4.4);r.setAttribute('rx',2.2);
+      r.setAttribute('x',p.x-6);r.setAttribute('y',p.y-2.2);r.setAttribute('fill','#E6DED2');
+      nodesG.appendChild(r);nodes.push({el:r,t:t,cx:p.x,cy:p.y,sec:el});
+    });
+  }
+  buildNodes();window.addEventListener('resize',buildNodes);
+
+  /* ---- reveals ---- */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io2.unobserve(e.target);}});},{threshold:.04});
+  document.querySelectorAll('.stage').forEach(function(el){io2.observe(el);});
+
+  /* ---- cinematic stages (living photo) ---- */
+  var stages=[].slice.call(document.querySelectorAll('.stage')).map(function(st){
+    return {el:st,shot:st.querySelector('.shot'),img:st.querySelector('.shot img'),
+            fx:st.getAttribute('data-effect')||'zoom',cap:st.querySelector('.cap'),door:st.querySelector('.door')};
+  });
+  var nav=document.querySelector('.nav');
+  /* profundidad: zoom sutil de las fotos enmarcadas al pasar por el viewport */
+  var pxImgs=[].slice.call(document.querySelectorAll('.scene .frame>img,.fin-frame img'));
+
+  /* ---- draw-the-line phrase ---- */
+  var drawStage=document.querySelector('.stage.center'),drawTxt=document.querySelector('#drawline .txt'),drawPen=document.querySelector('#drawline .pen');
+
+  var vy=0,lastY=window.scrollY;
+  function paint(){
+    var y=window.scrollY,vh=window.innerHeight;
+    vy=vy*0.8+Math.abs(y-lastY)*0.2;lastY=y;
+    var mblur=clamp(vy*0.05,0,2.4);
+
+    /* spine progress */
+    var max=document.body.scrollHeight-vh,G=clamp(y/Math.max(1,max),0,1);
+    live.style.strokeDashoffset=(L*(1-G)).toFixed(1);
+    var sp=live.getPointAtLength(L*G),lit=G>0.01&&G<0.99;
+    spark.setAttribute('cx',sp.x);spark.setAttribute('cy',sp.y);spark.setAttribute('opacity',lit?'0.95':'0');
+    sparkCore.setAttribute('cx',sp.x);sparkCore.setAttribute('cy',sp.y);sparkCore.setAttribute('opacity',lit?'1':'0');
+    var vc=y+vh*0.5,curI=-1,bestD=1e9;
+    nodes.forEach(function(n,i){var m=n.sec.offsetTop+n.sec.offsetHeight*0.5,d=Math.abs(m-vc);if(d<bestD){bestD=d;curI=i;}});
+    nodes.forEach(function(n,i){
+      var passed=G>=n.t-0.004,cur=(i===curI);
+      var w=cur?19:(passed?13:11),h=cur?5.4:4.4;
+      n.el.setAttribute('width',w);n.el.setAttribute('height',h);
+      n.el.setAttribute('x',n.cx-w/2);n.el.setAttribute('y',n.cy-h/2);
+      n.el.setAttribute('fill',cur?'#EFD29A':(passed?'#A7A29A':'#E4E3DF'));
+      n.el.setAttribute('opacity',cur?1:(passed?0.9:0.5));
+      if(cur){vglow.setAttribute('cx',n.cx);vglow.setAttribute('cy',n.cy);vglow.setAttribute('opacity','0.85');}
+    });
+    document.getElementById('top').style.width=(G*100).toFixed(2)+'%';
+    nav.classList.toggle('scrolled',y>10);
+    document.getElementById('wa').classList.toggle('show',y>vh*0.7);
+
+    /* stages */
+    var onDark=false;
+    stages.forEach(function(s){
+      var r=s.el.getBoundingClientRect();
+      var p=clamp((-r.top)/Math.max(1,(r.height-vh)),0,1); // 0..1 across the stage
+      if(r.top<vh*0.5&&r.bottom>vh*0.5)onDark=true;
+      if(r.bottom<0||r.top>vh){return;}
+      var tf='';
+      if(s.fx==='pan'){ tf='translateX('+(-8*p).toFixed(2)+'%) scale('+(1.18-0.02*p).toFixed(3)+')'; }
+      else if(s.fx==='rise'){ tf='translateY('+(-12*p).toFixed(2)+'%) scale(1.14)'; }
+      else if(s.fx==='door'){ tf='scale('+(1.14-0.12*p).toFixed(3)+')'; }
+      else { tf='scale('+(1.06+0.12*p).toFixed(3)+')'; }
+      s.shot.style.transform=tf;
+      /* DOF: blur when caption is prominent + motion blur */
+      var capP=smooth(p,0.12,0.4)*(1-smooth(p,0.7,0.95));
+      var blur=(s.fx==='door')?Math.min(mblur,0.5):(mblur+capP*2.2);
+      s.shot.style.filter='blur('+blur.toFixed(2)+'px)';
+      if(s.cap){ s.cap.style.opacity=smooth(p,0.10,0.34).toFixed(3); }
+      /* door glow on destino */
+      if(s.door){ var dg=smooth(p,0.18,0.72); s.door.style.background='radial-gradient(34% 40% at 40% 54%,rgba(255,210,140,'+(0.78*dg).toFixed(3)+'),transparent 70%)'; }
+    });
+    nav.classList.toggle('on-dark',onDark);
+
+    /* profundidad · zoom lento de fotos enmarcadas */
+    for(var pi2=0;pi2<pxImgs.length;pi2++){var pim=pxImgs[pi2],pr=pim.parentNode.getBoundingClientRect();
+      if(pr.bottom<-40||pr.top>vh+40)continue;
+      var pp=clamp((vh-pr.top)/(vh+pr.height),0,1);
+      pim.style.transform='scale('+(1.03+pp*0.1).toFixed(3)+') translateY('+((pp-0.5)*-10).toFixed(1)+'px)';}
+
+    /* draw phrase */
+    if(drawStage&&drawTxt){
+      var dr=drawStage.getBoundingClientRect();
+      var dp=clamp((-dr.top)/Math.max(1,(dr.height-vh)),0,1);
+      var w=smooth(dp,0.18,0.62); // 0..1 writing
+      drawTxt.style.backgroundPosition=(100-100*w)+'% 0';
+      drawPen.style.left='calc('+(w*100)+'% )';
+      drawPen.style.opacity=(w>0.02&&w<0.98)?'0.9':'0';
+    }
+    requestAnimationFrame(paint);
+  }
+  requestAnimationFrame(paint);
+
+  /* ---- rotword en la frase de la estantería ---- */
+  var rw=document.getElementById('rotword');
+  if(rw){var words=['el cambio','tu bienestar','el movimiento','tu eje','tu descanso'],wi=0;
+    setInterval(function(){wi=(wi+1)%words.length;rw.style.opacity=0;
+      setTimeout(function(){rw.textContent=words[wi];rw.style.opacity=1;},400);},2600);}
+
+  /* ---- carrusel Pilates con etiqueta ---- */
+  var pil=document.getElementById('pilcar');
+  if(pil){var pimgs=[].slice.call(pil.querySelectorAll('img')),pmsg=document.getElementById('pilmsg'),dotsBox=pil.querySelector('.pildots'),pi=0;
+    pimgs.forEach(function(_,k){var dd=document.createElement('i');if(k===0)dd.className='on';dotsBox.appendChild(dd);});
+    var dots=[].slice.call(dotsBox.children);
+    setInterval(function(){pimgs[pi].classList.remove('on');dots[pi].classList.remove('on');
+      pi=(pi+1)%pimgs.length;pimgs[pi].classList.add('on');dots[pi].classList.add('on');
+      pmsg.style.opacity=0;
+      setTimeout(function(){pmsg.textContent=pimgs[pi].getAttribute('data-msg');pmsg.style.opacity=1;},850);},4600);}
+
+  /* ---- dust particles ---- */
+  var cv=document.getElementById('dust'),cx=cv.getContext('2d'),DP=[];
+  function sizeCv(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
+  sizeCv();window.addEventListener('resize',sizeCv);
+  for(var k=0;k<30;k++){DP.push({x:Math.random(),y:Math.random(),r:0.6+Math.random()*1.8,s:0.00006+Math.random()*0.00012,a:0.05+Math.random()*0.18,ph:Math.random()*6.28});}
+  var t0=0;
+  function dust(){
+    t0+=0.016;cx.clearRect(0,0,cv.width,cv.height);
+    for(var j=0;j<DP.length;j++){var d=DP[j];d.y-=d.s;if(d.y<-0.02)d.y=1.02;
+      var px=(d.x+Math.sin(t0*0.3+d.ph)*0.01)*cv.width,py=d.y*cv.height;
+      cx.beginPath();cx.arc(px,py,d.r,0,6.28);cx.fillStyle='rgba(201,168,118,'+(d.a*(0.6+0.4*Math.sin(t0+d.ph))).toFixed(3)+')';cx.fill();}
+    requestAnimationFrame(dust);
+  }
+  if(!reduce)requestAnimationFrame(dust);
+
+  /* ---- year + preloader ---- */
+  var y2=document.querySelector('[data-year]');if(y2)y2.textContent=new Date().getFullYear();
+  var pc=0,pre=document.getElementById('pre'),bar=document.getElementById('prebar');
+  var pt=setInterval(function(){pc+=Math.random()*18+9;if(pc>=100){pc=100;clearInterval(pt);setTimeout(function(){pre.classList.add('done');},260);}bar.style.width=pc+'%';},80);
+  window.addEventListener('load',function(){setTimeout(function(){pre.classList.add('done');},1100);});
+})();
+</script>
+</body>
+</html>
