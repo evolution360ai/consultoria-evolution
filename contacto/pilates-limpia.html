@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pilates con máquinas — CONTACTO | El Prat de Llobregat</title>
+<meta name="description" content="Pilates con máquinas (reformer) en El Prat de Llobregat. Movimiento que te transforma: fuerza, postura y bienestar en grupos reducidos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700;800&family=Montserrat:wght@500;600;700&family=Poppins:wght@300;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A2B3B; --body:#3F4C58; --muted:#8894A0;
+    --line:#E3E7EA; --surface:#FFFFFF; --bg:#FAF9F7;
+    --secondary:#5F6F7E; --accent:#A4BCC2; --accent-tint:#C4D3D7; --btn:#6E8F9C;
+    --sans:'Inter',system-ui,sans-serif; --label:'Montserrat',system-ui,sans-serif; --body-f:'Inter',system-ui,sans-serif; --serif:'Playfair Display',Georgia,serif; --brand-f:'Poppins',system-ui,sans-serif;
+    --r-sm:8px; --r-md:12px; --r-lg:12px;
+    --sh-sm:0 1px 2px rgba(28,27,25,.06); --sh-md:0 10px 30px rgba(28,27,25,.10); --sh-lg:0 28px 70px rgba(28,27,25,.16);
+    --container:1200px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--body);font-family:var(--body-f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{color:var(--ink);letter-spacing:-.5px;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--label);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--secondary)}
+  .btn{font-family:var(--label);font-size:13.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:16px 30px;border-radius:28px;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn-solid{background:var(--btn);color:#fff;box-shadow:var(--sh-sm)}
+  .btn-solid:hover{background:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-md)}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+  section{position:relative}
+  .pad{padding-top:48px;padding-bottom:48px}
+
+  /* ---- NAV (igual que index/quiropráctica) ---- */
+  .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+       padding:18px 24px;background:var(--surface);box-shadow:0 1px 0 var(--line);transition:padding .3s,box-shadow .3s}
+  .nav.scrolled{padding-top:12px;padding-bottom:12px;box-shadow:0 1px 0 var(--line),0 8px 24px rgba(28,27,25,.06)}
+  .brand{font-family:var(--brand-f);font-size:22px;letter-spacing:0;color:#0B0C0D;display:flex;flex-direction:column;line-height:1}
+  .brand b{font-weight:800}
+  .brand span{font-weight:200}
+  .brand small{font-size:9px;letter-spacing:.28em;color:var(--secondary);text-transform:uppercase;margin-top:5px;font-weight:400;font-family:var(--label)}
+  .navlinks{display:flex;align-items:center;gap:26px}
+  .navlinks a:not(.btn){font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink)}
+  .navlinks a:not(.btn):hover{color:var(--secondary)}
+  .hbtn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:none;cursor:pointer;padding:0;flex:none;z-index:130;position:relative}
+  .hbtn span{position:relative;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:background .25s}
+  .hbtn span::before,.hbtn span::after{content:"";position:absolute;left:0;width:22px;height:2px;background:inherit;border-radius:2px;transition:transform .25s}
+  .hbtn span::before{transform:translateY(-7px)}
+  .hbtn span::after{transform:translateY(7px)}
+  .hbtn.open span{background:transparent!important}
+  .hbtn.open span::before{background:var(--ink);transform:translateY(0) rotate(45deg)}
+  .hbtn.open span::after{background:var(--ink);transform:translateY(0) rotate(-45deg)}
+  .mmenu{position:fixed;top:0;right:0;height:100vh;width:min(78vw,320px);background:var(--surface);z-index:120;box-shadow:var(--sh-lg);padding:110px 32px 32px;display:flex;flex-direction:column;gap:24px;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .mmenu.open{transform:translateX(0)}
+  .mmenu a{font-family:var(--sans);font-size:17px;font-weight:600;color:var(--ink)}
+  .mmenu a.btn{align-self:center;flex:none;justify-content:center;padding:14px 26px;white-space:nowrap;margin-top:10px;color:#fff;font-family:var(--label);font-size:13.5px}
+  .mscrim{position:fixed;inset:0;background:rgba(23,22,19,.42);z-index:115;opacity:0;pointer-events:none;transition:opacity .3s}
+  .mscrim.open{opacity:1;pointer-events:auto}
+  @media(max-width:860px){.navlinks{display:none}}
+  @media(min-width:861px){.hbtn{display:none}}
+
+  /* ---- HERO ---- */
+  .hero{min-height:64vh;display:flex;align-items:flex-end;background:#cfd8d2}
+  .hero .ph{position:absolute;inset:0;overflow:hidden}
+  .hero .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;animation:kenburns 18s ease-in-out infinite alternate}
+  .hero .ph img.active{opacity:1}
+  @keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.1)}}
+  .hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,9,8,.78) 0%,rgba(8,9,8,.68) 45%,rgba(6,7,6,.95) 88%)}
+  .hero-inner{position:relative;z-index:2;width:100%;padding:0 24px clamp(28px,6vw,56px)}
+  .hero-inner .box{max-width:640px}
+  .hero-inner .eyebrow{color:var(--accent-tint)}
+  .hero h1{font-family:var(--serif);font-weight:400;color:#fff;font-size:clamp(34px,4vw + 20px,54px);line-height:1.1;margin:0 0 16px;overflow-wrap:break-word;text-shadow:0 2px 6px rgba(0,0,0,.85),0 6px 26px rgba(0,0,0,.75),0 0 70px rgba(0,0,0,.6)}
+  .hero h1 b{font-weight:700}
+  .hero-rule{width:40px;height:2px;background:rgba(255,255,255,.5);margin-bottom:18px}
+  .hero p{color:rgba(255,255,255,.86);font-size:clamp(15.5px,1.5vw,17.5px);max-width:44ch;margin-bottom:26px}
+  .hero .btn{margin-top:4px}
+  br.brk{display:inline}
+  @media(min-width:720px){ br.brk{display:none} .hero{min-height:70vh} }
+
+  .beam{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:34px 24px}
+  .beam .it{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+  .beam .it svg{width:24px;height:24px;color:var(--secondary);transition:transform .3s ease}
+  .beam .it:hover svg{transform:translateY(-3px) scale(1.15)}
+  .beam .it span{font-family:var(--label);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  @media(min-width:640px){.beam .it span{font-size:12px}}
+  .hero-inner .beam{padding:0;margin-top:clamp(28px,6vw,44px)}
+  .hero-inner .beam .it svg{color:#fff}
+  .hero-inner .beam .it span{color:#fff}
+
+  /* ---- INTRO ---- */
+  .intro{overflow:hidden}
+  .intro .wrap{position:relative;z-index:1;max-width:640px}
+  .intro h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,2.9vw + 29px,64px);margin:14px 0 16px}
+  .intro p{font-size:16px;max-width:56ch;margin-bottom:26px}
+  .intro-sil{position:absolute;right:clamp(-18%,-4vw,-2%);bottom:-8%;width:min(70vw,380px);opacity:.9;pointer-events:none;z-index:0}
+  .volver-tag{position:relative;z-index:1;margin-top:44px;font-family:var(--sans);font-weight:300;font-size:19px;color:var(--ink)}
+  .volver-tag b{font-weight:700;color:var(--secondary)}
+
+  /* ---- SCENE ---- */
+  .scene{border-radius:var(--r-lg);overflow:hidden;position:relative;box-shadow:var(--sh-lg);aspect-ratio:4/3;background:#3a413f;transition:transform .5s ease}
+  .scene:hover{transform:scale(1.012)}
+  .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;filter:brightness(1.16) saturate(1.05)}
+  .scene img.active{opacity:1}
+  .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,7,6,.95) 0%,rgba(6,7,6,.6) 55%,rgba(6,7,6,0) 100%)}
+  .scene-cap{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:clamp(20px,4vw,36px);display:flex;flex-direction:column;align-items:flex-start}
+  .scene-cap p{max-width:26ch;color:#fff;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(19px,2.6vw,28px);line-height:1.35;text-shadow:0 3px 20px rgba(0,0,0,.55),0 1px 6px rgba(0,0,0,.5)}
+  .scene-cap p b{font-weight:600;font-style:normal}
+  @media(min-width:720px){.scene{aspect-ratio:21/9}}
+
+  /* ---- CARRUSEL foto+mensaje ---- */
+  #pilcar{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:4/3;background:#26241f}
+  #pilcar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.7s ease-in-out,transform 8s ease}
+  #pilcar img.on{opacity:1;transform:scale(1)}
+  .pilcap{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;
+       background:radial-gradient(120% 90% at 50% 50%,rgba(16,14,12,.28),rgba(16,14,12,.58));color:#fff}
+  .pilcap span{transition:opacity .55s}
+  .pilmsg{display:block;max-width:22ch;font-family:var(--label);font-weight:400;text-transform:uppercase;font-size:clamp(17px,2.3vw,26px);line-height:1.3;letter-spacing:.02em;text-shadow:0 3px 26px rgba(0,0,0,.6)}
+  .pilmsg b{font-weight:800}
+  .pilsign{margin-top:26px;font-family:var(--brand-f);font-size:15px;letter-spacing:0;color:#fff;
+       background:rgba(16,14,12,.42);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:9px 20px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .pilsign b{font-weight:800}
+  .pilsign em{font-style:normal;font-weight:200;letter-spacing:.02em;color:var(--accent);margin-left:.09em}
+  .pildots{position:absolute;top:14px;right:14px;z-index:2;display:flex;gap:6px}
+  .pildots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .3s,width .3s}
+  .pildots i.on{background:#fff;width:18px;border-radius:4px}
+  @media(min-width:720px){#pilcar{aspect-ratio:21/9}}
+
+  /* ---- ENFOQUE / WHO (cabecera + beneficios, compartido) ---- */
+  .enfoque,.who{}
+  .head{max-width:620px;margin-bottom:34px}
+  .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,2.9vw + 29px,64px);margin:14px 0 14px}
+  .head p{font-size:16px}
+  .benefits{display:flex;flex-direction:column;gap:26px;margin-bottom:40px}
+  .benefits .b{display:flex;gap:18px;align-items:flex-start}
+  .benefits .ic{flex:none;width:58px;height:58px;border-radius:50%;background:var(--surface);border:1.5px solid var(--accent-tint);display:flex;align-items:center;justify-content:center}
+  .benefits .ic svg{width:26px;height:26px;color:var(--secondary)}
+  .benefits h3{font-family:var(--label);font-weight:600;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .benefits p{font-size:15.5px}
+  @media(min-width:720px){.benefits{flex-direction:row}.benefits .b{flex-direction:column;text-align:left}}
+
+  /* ---- QUOTE ---- */
+  .quote-band{background:var(--accent);color:var(--ink);text-align:center;padding:clamp(48px,8vw,80px) 24px}
+  .quote-band blockquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(21px,3.2vw,30px);max-width:20ch;margin:0 auto 18px;line-height:1.4}
+  .quote-band cite{font-family:var(--label);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+
+  /* ---- CTA band ---- */
+  .band{background:var(--accent);color:var(--ink);text-align:center;padding:clamp(48px,8vw,80px) 24px}
+  .band h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,2.9vw + 29px,64px);max-width:20ch;margin:14px auto 22px}
+
+  /* ---- FOOTER ---- */
+  footer{background:var(--surface);color:var(--ink);text-align:center;padding:clamp(64px,10vw,100px) 24px clamp(36px,6vw,56px);position:relative;overflow:hidden;border-top:1px solid var(--line)}
+  .foot-trio{position:relative;display:flex;justify-content:center;gap:clamp(18px,5vw,48px);margin-bottom:40px}
+  .foot-trio div{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .foot-trio img{width:clamp(64px,14vw,96px);height:clamp(64px,14vw,96px);object-fit:contain}
+  .foot-trio span{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--btn);line-height:1.4}
+  .foot-logo{position:relative;font-family:var(--brand-f);font-size:38px;color:#0B0C0D;margin:18px 0 10px}
+  .foot-logo b{font-weight:800}.foot-logo span{font-weight:200}
+  .foot-logo small{display:block;font-size:11px;letter-spacing:.34em;color:var(--muted);font-weight:400;margin-top:6px;text-transform:uppercase;font-family:var(--label)}
+  .map{border-radius:36px 90px 36px 90px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:16/10;margin:0 auto;max-width:820px;background:var(--surface);padding:10px;border:1px solid var(--line)}
+  .map iframe{width:100%;height:calc(100% + 44px);border:0;display:block;border-radius:26px 70px 26px 70px;filter:grayscale(.82) contrast(1.05) brightness(1.02) saturate(1.6)}
+  .foot-rule{position:relative;width:56px;height:1.5px;background:var(--line);margin:30px auto}
+  .footnav{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:26px;margin-bottom:34px}
+  .footnav a{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--body)}
+  .footnav a:hover{color:var(--ink)}
+  .foot-base{position:relative;font-family:var(--label);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--btn)}
+
+  /* ---- separador-vértebra entre secciones ---- */
+  .vsep{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 0;background:var(--bg)}
+  .vsep .ln{width:1.5px;height:26px;border-radius:2px}
+  .vsep .ln.top{background:linear-gradient(180deg,transparent,var(--line))}
+  .vsep .ln.bot{background:linear-gradient(180deg,var(--line),transparent)}
+  .vsep .disc{width:15px;height:5px;border-radius:3px;background:var(--accent-tint);box-shadow:0 0 0 5px rgba(28,27,25,.03)}
+  .vsep .msg{font-family:var(--label);font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---- animación de aparición + hover ---- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .benefits .ic{transition:transform .3s ease}
+  .benefits .b:hover .ic{transform:scale(1.1)}
+  .brand{transition:opacity .2s ease}
+  .brand:hover{opacity:.7}
+  .foot-trio img{transition:transform .35s ease}
+  .foot-trio div:hover img{transform:scale(1.08) rotate(-3deg)}
+
+  #wa{position:fixed;right:20px;bottom:20px;z-index:110;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 34px rgba(37,211,102,.4);opacity:0;transform:translateY(16px) scale(.85);transition:opacity .35s,transform .35s,box-shadow .25s}
+  #wa.show{opacity:1;transform:none}
+  #wa:hover{transform:scale(1.08);box-shadow:0 18px 40px rgba(37,211,102,.55)}
+  #wa svg{width:28px;height:28px}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero .ph img.active,.scene img.active,#pilcar img.on{animation:none}
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span><b>CON</b><span>TACTO</span></span><small>Pilates</small></a>
+  <div class="navlinks">
+    <a href="index.html">Inicio</a>
+    <a href="quiropractica-limpia.html">Quiropráctica</a>
+    <a href="pilates-limpia.html">Pilates</a>
+    <a href="quiropractica-limpia.html#contacto">Contacto</a>
+    <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer">Reserva tu clase</a>
+  </div>
+  <button class="hbtn" id="hbtn" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+</nav>
+<div class="mscrim" id="mscrim"></div>
+<div class="mmenu" id="mmenu">
+  <a href="index.html">Inicio</a>
+  <a href="quiropractica-limpia.html">Quiropráctica</a>
+  <a href="pilates-limpia.html">Pilates</a>
+  <a href="quiropractica-limpia.html#contacto">Contacto</a>
+  <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer">Reserva tu clase →</a>
+</div>
+
+<section id="top" class="hero">
+  <div class="ph">
+    <img class="active" src="assets/img/reformer-mejorado.png" alt="Máquina reformer en CONTACTO Pilates, El Prat de Llobregat" style="object-position:50% 42%">
+    <img src="assets/img/pilates-apaisada.png" alt="Máquinas reformer en CONTACTO Pilates, El Prat de Llobregat" style="object-position:50% 65%">
+  </div>
+  <div class="hero-inner">
+    <div class="box">
+      <h1>Movimiento<br class="brk"> que te<br class="brk"> <b>transforma.</b></h1>
+      <div class="hero-rule"></div>
+      <p>Pilates con máquinas para un cuerpo más fuerte, una mente más tranquila y una vida con más energía.</p>
+      <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer">Reserva tu clase →</a>
+    </div>
+    <div class="beam beam-hero">
+      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5h11M6.5 15.5h11"/><rect x="2.5" y="7" width="4" height="3" rx="1"/><rect x="2.5" y="14" width="4" height="3" rx="1"/><rect x="17.5" y="7" width="4" height="3" rx="1"/><rect x="17.5" y="14" width="4" height="3" rx="1"/></svg><span>Más fuerza</span></div>
+      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-3-1.5-5-4.5-5-8 3.2 0 5.2 2 5 5.5"/><path d="M12 20c3-1.5 5-4.5 5-8-3.2 0-5.2 2-5 5.5"/><circle cx="9" cy="7.2" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="7.2" r=".9" fill="currentColor" stroke="none"/></svg><span>Más equilibrio</span></div>
+      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 4A5 5 0 0 1 12 7a5 5 0 0 1 6.6-3c3.4.5 4.9 4 3.4 7.7C19.5 16.4 12 21 12 21Z"/></svg><span>Más bienestar</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Respira</span><span class="ln bot"></span></div>
+
+<section id="sobre-nosotros" class="pad intro">
+  <img class="intro-sil" src="assets/img/silueta-sentirse-bien.webp" alt="" aria-hidden="true">
+  <div class="wrap">
+    <span class="eyebrow">Pilates con máquinas</span>
+    <h2>Disciplina hoy, bienestar siempre.</h2>
+    <p>Clases personalizadas en un entorno cuidado, con instructores especializados y máquinas de última generación.</p>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">En movimiento</span><span class="ln bot"></span></div>
+
+<section id="enfoque" class="pad enfoque">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Un cuerpo más fuerte</span>
+      <h2>Precisión. Control. Resultados.</h2>
+      <p>El Pilates con máquinas te ayuda a fortalecer tu cuerpo de forma equilibrada, mejorar tu postura y ganar movilidad, con un trabajo profundo y seguro.</p>
+    </div>
+    <div class="benefits">
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5h11M6.5 15.5h11"/><rect x="2.5" y="7" width="4" height="3" rx="1"/><rect x="2.5" y="14" width="4" height="3" rx="1"/><rect x="17.5" y="7" width="4" height="3" rx="1"/><rect x="17.5" y="14" width="4" height="3" rx="1"/></svg></div>
+        <div><h3>Fuerza funcional</h3><p>Tonifica todo el cuerpo sin impacto.</p></div>
+      </div>
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-3-1.5-5-4.5-5-8 3.2 0 5.2 2 5 5.5"/><path d="M12 20c3-1.5 5-4.5 5-8-3.2 0-5.2 2-5 5.5"/><circle cx="9" cy="7.2" r=".9" fill="currentColor" stroke="none"/><circle cx="15" cy="7.2" r=".9" fill="currentColor" stroke="none"/></svg></div>
+        <div><h3>Mejor postura</h3><p>Alinea tu cuerpo y previene molestias.</p></div>
+      </div>
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6"/></svg></div>
+        <div><h3>Más energía</h3><p>Siéntete más ágil, fuerte y con mayor bienestar.</p></div>
+      </div>
+    </div>
+    <div class="photo" id="pilcar">
+      <img class="on" src="assets/img/reformer.webp" alt="Reformer" data-msg="Cuando trabajas con control, tu cuerpo responde. <b>Vuelve a moverte con libertad.</b>">
+      <img src="assets/img/pilates-sala.webp" alt="Sala" data-msg="Aquí nadie va con prisa. <b>Solo tú, tu cuerpo y el movimiento.</b>">
+      <img src="assets/img/pilates-apaisada.png" alt="Máquinas reformer en fila" style="object-position:50% 65%" data-msg="Máquinas de última generación, <b>en un espacio pensado para ti.</b>">
+      <div class="pilcap">
+        <span class="pilmsg" id="pilmsg">Cuando trabajas con control, tu cuerpo responde. <b>Vuelve a moverte con libertad.</b></span>
+        <span class="pilsign"><b>CON</b><em>TACTO</em></span>
+      </div>
+      <div class="pildots"></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-band">
+  <blockquote>"El cambio se produce a través del movimiento, y el movimiento te cuida."</blockquote>
+  <cite>Contacto Pilates</cite>
+</div>
+
+<section id="quien" class="pad who">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Para quién es Pilates</span>
+      <h2>Un espacio para ti.</h2>
+      <p>El Pilates con máquinas se adapta a ti, a tu ritmo y a tus objetivos. Tanto si buscas mejorar tu forma física, recuperarte de una lesión o simplemente sentirte mejor en tu día a día, aquí encontrarás tu lugar.</p>
+    </div>
+    <div class="benefits">
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/></svg></div>
+        <div><h3>Todos los niveles</h3><p>Desde principiantes hasta avanzados.</p></div>
+      </div>
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.3 4.5 5.6 4a4.9 4.9 0 0 1 6.4 2.5A4.9 4.9 0 0 1 18.4 4c3.3.5 4.9 3.9 3.4 7.2C19.5 15.9 12 20.5 12 20.5Z"/></svg></div>
+        <div><h3>Todas las edades</h3><p>Un método seguro y efectivo.</p></div>
+      </div>
+      <div class="b">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a7 7 0 0 1-7-7c0-4 3-9 10-11 1 4-1 8-3 10a12 12 0 0 1-6 4Z"/><path d="M4.5 14.5c3-1 5-3 8-7"/></svg></div>
+        <div><h3>Objetivos diversos</h3><p>Salud, rendimiento, recuperación o bienestar.</p></div>
+      </div>
+    </div>
+    <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer">Reserva tu clase →</a>
+    <div class="scene" style="margin-top:48px">
+      <img class="active" src="assets/img/pilates-sala2-mejorada.png" alt="Sala de Pilates con varios reformers en CONTACTO, El Prat de Llobregat">
+      <img src="assets/img/reformer-mejorado.png" alt="Reformer de Pilates en CONTACTO, El Prat de Llobregat">
+      <div class="scene-cap"><p>Aquí no vienes a entrenar. <b>Vuelves a sentirte bien.</b></p><span class="pilsign"><b>CON</b><em>TACTO</em></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Te esperamos</span><span class="ln bot"></span></div>
+
+<section class="pad" id="mapa">
+  <div class="wrap">
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Carrer+de+Manuel+Bertrand+31,+El+Prat+de+Llobregat&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — Manuel Bertrand 31, El Prat de Llobregat"></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <span class="eyebrow">Empieza hoy</span>
+  <h2>Prueba tu primera clase de Pilates gratis.</h2>
+  <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer">Reserva tu clase de prueba →</a>
+</div>
+
+<footer>
+  <div class="foot-trio">
+    <div><img src="assets/img/silueta-vivir.webp" alt="Ilustración volver a vivir"><span>Volver<br>a vivir</span></div>
+    <div><img src="assets/img/silueta-sentirse-bien.webp" alt="Ilustración volver a sentirse bien"><span>Volver a<br>sentirse bien</span></div>
+    <div><img src="assets/img/silueta-reir.webp" alt="Ilustración volver a reír"><span>Volver<br>a reír</span></div>
+  </div>
+  <div class="foot-logo"><b>CON</b><span>TACTO</span><small>Pilates</small></div>
+  <div class="foot-rule"></div>
+  <nav class="footnav">
+    <a href="index.html">Inicio</a>
+    <a href="quiropractica-limpia.html">Quiropráctica</a>
+    <a href="pilates-limpia.html">Pilates</a>
+    <a href="quiropractica-limpia.html#contacto">Contacto</a>
+  </nav>
+  <p class="foot-base">Tu salud. En buenas manos.</p>
+</footer>
+
+<a id="wa" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20de%20Pilates" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.7.9 3.6 1.4 5.5 1.4h.3C24.6 28.9 30 23.5 30 16.9 30 9.4 24.6 3 16 3zm7 17.1c-.3.9-1.8 1.7-2.5 1.8-.6.1-1.4.1-2.3-.1-.5-.2-1.2-.4-2.1-.8-3.7-1.6-6.1-5.3-6.3-5.6-.2-.3-1.5-2-1.5-3.8s.9-2.7 1.3-3.1c.3-.3.7-.4 1-.4h.7c.2 0 .5 0 .8.6l1.1 2.6c.1.2.2.5 0 .8l-.5.7c-.2.2-.4.5-.2.9.3.5 1.1 1.8 2.3 2.9 1.6 1.4 2.8 1.8 3.2 2 .3.1.6.1.8-.1.2-.3.9-1.1 1.2-1.4.2-.3.5-.3.8-.2l2.5 1.2c.4.2.6.3.7.4.1.3.1.9-.2 1.7z"/></svg>
+</a>
+
+<script>
+(function(){
+  'use strict';
+  var hbtn=document.getElementById('hbtn'),mmenu=document.getElementById('mmenu'),mscrim=document.getElementById('mscrim');
+  function closeMenu(){hbtn.classList.remove('open');mmenu.classList.remove('open');mscrim.classList.remove('open');hbtn.setAttribute('aria-expanded','false');}
+  hbtn.addEventListener('click',function(){
+    var willOpen=!mmenu.classList.contains('open');
+    hbtn.classList.toggle('open',willOpen);mmenu.classList.toggle('open',willOpen);mscrim.classList.toggle('open',willOpen);
+    hbtn.setAttribute('aria-expanded',willOpen?'true':'false');
+  });
+  mscrim.addEventListener('click',closeMenu);
+  mmenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
+
+  function carousel(sel,ms){
+    var els=document.querySelectorAll(sel);
+    if(els.length<2) return;
+    var i=0;
+    setInterval(function(){
+      els[i].classList.remove('active');
+      i=(i+1)%els.length;
+      els[i].classList.add('active');
+    },ms);
+  }
+  carousel('.hero .ph img',6000);
+  carousel('#quien .scene img',6500);
+
+  var nav=document.getElementById('nav'),wa=document.getElementById('wa');
+  function paint(){
+    var y=window.scrollY;
+    nav.classList.toggle('scrolled',y>10);
+    wa.classList.toggle('show',y>window.innerHeight*0.6);
+  }
+  document.addEventListener('scroll',paint,{passive:true});
+  paint();
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:.15});
+  document.querySelectorAll('.intro .wrap, .enfoque .head, .who .head, .benefits .b, .photo, .scene, .quote-band, .band > *, #mapa .map').forEach(function(el){
+    el.classList.add('reveal'); io.observe(el);
+  });
+
+  var pil=document.getElementById('pilcar');
+  if(pil){var pimgs=[].slice.call(pil.querySelectorAll('img')),pmsg=document.getElementById('pilmsg'),dotsBox=pil.querySelector('.pildots'),pi=0;
+    pimgs.forEach(function(_,k){var dd=document.createElement('i');if(k===0)dd.className='on';dotsBox.appendChild(dd);});
+    var dots=[].slice.call(dotsBox.children);
+    setInterval(function(){pimgs[pi].classList.remove('on');dots[pi].classList.remove('on');
+      pi=(pi+1)%pimgs.length;pimgs[pi].classList.add('on');dots[pi].classList.add('on');
+      pmsg.style.opacity=0;
+      setTimeout(function(){pmsg.innerHTML=pimgs[pi].getAttribute('data-msg');pmsg.style.opacity=1;},850);},4600);}
+})();
+</script>
+</body>
+</html>
