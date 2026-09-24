@@ -12,7 +12,9 @@
   :root{
     --ink:#1A2B3B; --body:#3F4C58; --muted:#8894A0;
     --line:#E3E7EA; --surface:#FFFFFF; --bg:#FAF9F7;
-    --secondary:#5F6F7E; --accent:#A4BCC2; --accent-tint:#C4D3D7; --btn:#6E8F9C;
+    --secondary:#5F6F7E; --accent:#A4BCC2; --accent-tint:#C4D3D7; --btn:#A4BCC2;
+    /* Azul de marca para pósters/etiquetas — placeholder, pendiente hex exacto de Héctor */
+    --blue:#A4BCC2; --blue-deep:#8AA6AE; --franja:#A4BCC2;
     --sans:'Inter',system-ui,sans-serif; --label:'Montserrat',system-ui,sans-serif; --body-f:'Inter',system-ui,sans-serif; --serif:'Playfair Display',Georgia,serif; --brand-f:'Poppins',system-ui,sans-serif;
     --r-sm:8px; --r-md:12px; --r-lg:12px;
     --sh-sm:0 1px 2px rgba(28,27,25,.06); --sh-md:0 10px 30px rgba(28,27,25,.10); --sh-lg:0 28px 70px rgba(28,27,25,.16);
@@ -41,7 +43,7 @@
   .brand{font-family:var(--brand-f);font-size:22px;letter-spacing:0;color:#0B0C0D;display:flex;flex-direction:column;line-height:1}
   .brand b{font-weight:800}
   .brand span{font-weight:300}
-  .brand small{font-size:9px;letter-spacing:.28em;color:var(--secondary);text-transform:uppercase;margin-top:5px;font-weight:400;font-family:var(--label)}
+  .brand small{font-size:11px;letter-spacing:.16em;color:var(--secondary);text-transform:uppercase;margin-top:5px;font-weight:500;font-family:var(--label);white-space:nowrap}
   .navlinks{display:flex;align-items:center;gap:28px}
   .navlinks a:not(.btn){font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink)}
   .navlinks a:not(.btn):hover{color:var(--secondary)}
@@ -74,7 +76,7 @@
   .hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,22,0) 30%,rgba(18,20,19,.86) 88%);z-index:1}
   .hero-inner{position:relative;z-index:2;width:100%;padding:0 24px clamp(28px,6vw,56px)}
   .hero-inner .box{max-width:640px}
-  .hero h1{font-family:var(--brand-f);font-weight:300;text-transform:uppercase;letter-spacing:0;color:#fff;font-size:clamp(30px,4vw + 16px,54px);line-height:1.12;text-shadow:0 2px 18px rgba(0,0,0,.42)}
+  .hero h1{font-family:var(--brand-f);font-weight:800;text-transform:uppercase;letter-spacing:0;color:#fff;font-size:clamp(30px,4vw + 16px,54px);line-height:1.12;text-shadow:0 2px 18px rgba(0,0,0,.42)}
   .hero h1 b{font-weight:800;color:#fff}
   .hero .rot b{font-weight:700}
   .hero .ph img.active{animation:kenburns 16s ease-in-out infinite alternate}
@@ -173,8 +175,8 @@
   footer{background:var(--surface);color:var(--ink);text-align:center;padding:clamp(64px,10vw,100px) 24px clamp(36px,6vw,56px);position:relative;overflow:hidden;border-top:1px solid var(--line)}
   .foot-trio{position:relative;display:flex;justify-content:center;gap:clamp(18px,5vw,48px);margin-bottom:40px}
   .foot-trio div{display:flex;flex-direction:column;align-items:center;gap:12px}
-  .foot-trio img{width:clamp(64px,14vw,96px);height:clamp(64px,14vw,96px);object-fit:contain}
-  .foot-trio span{font-family:var(--label);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--btn);line-height:1.4}
+  .foot-trio img{width:clamp(64px,14vw,96px);height:clamp(64px,14vw,96px);object-fit:contain;mix-blend-mode:multiply}
+  .foot-trio span{font-family:var(--brand-f);font-weight:800;font-size:12px;letter-spacing:.02em;text-transform:uppercase;color:var(--btn);line-height:1.35}
   .foot-logo{position:relative;font-family:var(--brand-f);font-size:38px;color:#0B0C0D;margin:18px 0 10px}
   .foot-logo b{font-weight:800}.foot-logo span{font-weight:300}
   .foot-logo small{display:block;font-size:11px;letter-spacing:.34em;color:var(--muted);font-weight:400;margin-top:6px;text-transform:uppercase;font-family:var(--label)}
@@ -204,11 +206,22 @@
   .bmarquee .it::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-tint);margin-left:26px}
   @keyframes bmscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* ---- LÁMINA SENTENCIA (azul, cara + frase) ---- */
-  .laminaz{background:linear-gradient(158deg,#6E8F9C,#5b7a87);color:#fff;text-align:center;padding:clamp(52px,9vw,96px) 24px}
-  .laminaz img{width:clamp(92px,15vw,148px);height:clamp(92px,15vw,148px);object-fit:contain;margin:0 auto 22px;filter:brightness(0) invert(1);opacity:.9}
-  .laminaz p{font-family:var(--brand-f);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(24px,3.4vw,40px);line-height:1.1;color:#fff}
-  .laminaz small{display:block;font-family:var(--label);font-weight:600;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-tint);margin-top:16px}
+  /* ---- LÁMINA PÓSTER (azul: título pequeño arriba + cara GRANDE) ---- */
+  .laminaz{background:var(--bg);color:var(--blue);text-align:center;padding:clamp(48px,8vw,88px) 24px}
+  .laminaz .cap{display:block;font-family:var(--brand-f);font-weight:800;font-size:clamp(18px,2.2vw,26px);letter-spacing:.02em;text-transform:uppercase;color:var(--blue);margin-bottom:clamp(20px,3.5vw,34px)}
+  .laminaz img{width:clamp(190px,34vw,340px);height:auto;object-fit:contain;margin:0 auto;opacity:1;mix-blend-mode:multiply}
+  /* Variante SOLO TEXTO (frase completa, tipo póster "cuando ajustas…") */
+  .lamina-text{background:var(--franja);color:#fff;text-align:center;padding:clamp(56px,10vw,110px) 24px}
+  .lamina-text p{font-family:var(--brand-f);font-weight:800;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(24px,3.2vw + 8px,48px);line-height:1.12;color:#fff;max-width:20ch;margin:0 auto}
+
+  /* ---- ETIQUETA/PESTAÑA AZUL (para títulos de sección) ---- */
+  .tag-blue{display:inline-block;background:var(--blue);color:#fff;font-family:var(--label);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 15px;border-radius:6px}
+  /* ---- FRANJA AZUL de lado a lado, título en bold blanco (tipografía del hero) ---- */
+  .franja{background:var(--franja);color:#fff;text-align:center;padding:clamp(48px,7vw,88px) 24px}
+  .franja h2{font-family:var(--brand-f);font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.005em;line-height:1.1;font-size:clamp(32px,3.4vw + 14px,60px);max-width:24ch;margin:0 auto}
+  .franja .kick{display:block;font-family:var(--label);font-weight:600;font-size:clamp(11px,1.1vw,13px);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:clamp(18px,3vw,28px)}
+  .franja .kick b{font-weight:800;color:#fff}
+  .franja p{font-family:var(--sans);font-size:clamp(15px,1.4vw,17.5px);color:rgba(255,255,255,.92);max-width:56ch;margin:clamp(20px,3vw,30px) auto 0;line-height:1.65}
 
   /* ---- BLOQUES DE TEXTO (qué es / subluxaciones) ---- */
   .prose .head{max-width:640px;margin-bottom:6px}
@@ -281,22 +294,20 @@
   <a class="brand" href="index.html"><span><b>CON</b><span>TACTO</span></span><small>Quiropráctico</small></a>
   <div class="navlinks">
     <a href="index.html">Inicio</a>
-    <a href="#sobre-nosotros">Sobre nosotros</a>
     <a href="quiropractica-limpia.html">Quiropráctica</a>
     <a href="pilates-limpia.html">Pilates</a>
-    <a href="#contacto">Contacto</a>
-    <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita</a>
+    <a href="#contacto"><b>Con</b>tacto</a>
+    <a class="btn btn-solid" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita</a>
   </div>
   <button class="hbtn" id="hbtn" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
 </nav>
 <div class="mscrim" id="mscrim"></div>
 <div class="mmenu" id="mmenu">
   <a href="index.html">Inicio</a>
-  <a href="#sobre-nosotros">Sobre nosotros</a>
   <a href="quiropractica-limpia.html">Quiropráctica</a>
   <a href="pilates-limpia.html">Pilates</a>
-  <a href="#contacto">Contacto</a>
-  <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
+  <a href="#contacto"><b>Con</b>tacto</a>
+  <a class="btn btn-solid" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
 </div>
 
 <!-- PANTALLA 1 · INICIO -->
@@ -313,7 +324,7 @@
         <p class="rot">Volver a vivir</p>
         <p class="rot">Volver a reír</p>
       </div>
-      <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
+      <a class="btn btn-solid" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
       <p class="hero-trust"><span class="stars">★★★★★</span>41 opiniones reales · 5.0/5</p>
     </div>
   </div>
@@ -321,48 +332,30 @@
 
 <div class="rule"><i></i></div>
 
-<div class="beam">
-  <div class="it">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a7 7 0 0 1-7-7c0-4 3-9 10-11 1 4-1 8-3 10a12 12 0 0 1-6 4Z"/><path d="M4.5 14.5c3-1 5-3 8-7"/></svg>
-    <span>Menos rigidez</span>
-  </div>
-  <div class="it">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/></svg>
-    <span>Más movilidad</span>
-  </div>
-  <div class="it">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.3 4.5 5.6 4a4.9 4.9 0 0 1 6.4 2.5A4.9 4.9 0 0 1 18.4 4c3.3.5 4.9 3.9 3.4 7.2C19.5 15.9 12 20.5 12 20.5Z"/></svg>
-    <span>Mejor calidad de vida</span>
-  </div>
-</div>
-
-<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Respira</span><span class="ln bot"></span></div>
-
-<!-- SOBRE NOSOTROS -->
-<section id="sobre-nosotros" class="pad intro">
+<!-- BENEFICIOS (los 6 tips juntos, arriba) -->
+<section id="beneficios" class="pad">
   <div class="wrap">
-    <span class="eyebrow">Contacto Quiropráctico</span>
-    <h2>Tu salud en<br class="brk"> equilibrio, de forma<br class="brk"> natural.</h2>
-    <p>La quiropráctica te ayuda a recuperar el equilibrio de tu cuerpo, mejorar tu bienestar y volver a vivir sin limitaciones.</p>
-    <a class="btn btn-outline" href="#enfoque">Conoce más</a>
-    <p class="volver-tag">Volver a <b>vivir</b></p>
+    <div class="bgrid">
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a7 7 0 0 1-7-7c0-4 3-9 10-11 1 4-1 8-3 10a12 12 0 0 1-6 4Z"/><path d="M4.5 14.5c3-1 5-3 8-7"/></svg></span><div><h3>Menos rigidez</h3><p>Recupera movilidad y suelta la tensión acumulada en tu columna.</p></div></div>
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v6m-4 6 4-6 4 6M8 11h8"/></svg></span><div><h3>Más movilidad</h3><p>Muévete con más libertad y sin limitaciones en tu día a día.</p></div></div>
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><h3>Sistema inmune fuerte</h3><p>Un sistema nervioso equilibrado ayuda a tu cuerpo a defenderse mejor.</p></div></div>
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><div><h3>Aumenta la energía</h3><p>Cuando tu cuerpo funciona mejor, notas más vitalidad cada día.</p></div></div>
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 4A5 5 0 0 1 12 7a5 5 0 0 1 6.6-3c3.4.5 4.9 4 3.4 7.7C19.5 15.4 12 20 12 20Z"/></svg></span><div><h3>Disminuye el estrés</h3><p>Libera interferencias y ayuda a tu cuerpo a relajarse de verdad.</p></div></div>
+      <div class="b"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v9m0 0-3 5m3-5 3 5M7 10.5h10"/></svg></span><div><h3>Mejora tu postura</h3><p>Alinea tu columna y recupera una postura más natural y erguida.</p></div></div>
+    </div>
   </div>
 </section>
 
-<!-- LÁMINA SENTENCIA 1 -->
+<!-- LÁMINA PÓSTER 1 · VOLVER A REÍR -->
 <section class="laminaz">
-  <img src="assets/img/silueta-sentirse-bien.webp?v=2" alt="">
-  <p>Vuelve a sentirte bien</p>
-  <small>Contacto · Quiropráctica</small>
+  <span class="cap">Volver a reír</span>
+  <img src="assets/img/silueta-reir.webp?v=2" alt="Ilustración de marca: volver a reír">
 </section>
 
 <!-- ¿QUÉ ES LA QUIROPRÁCTICA? -->
+<section class="franja"><h2>¿Qué es la<br>quiropráctica?</h2></section>
 <section id="que-es" class="pad prose">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Vivir en salud y equilibrio</span>
-      <h2>¿Qué es la quiropráctica?</h2>
-    </div>
     <p class="lead">La quiropráctica cuida tu columna vertebral y tu sistema nervioso. A través de <b>ajustes manuales suaves, seguros y precisos</b>, optimiza tu postura y el funcionamiento de todo tu cuerpo.</p>
     <p>Parte de una idea sencilla: cuando la columna y el sistema nervioso funcionan al 100%, tu cuerpo puede cuidarse a sí mismo. Si la columna pierde su alineación, se pierde parte de la conexión entre el sistema nervioso y el resto del cuerpo, y con ella, el funcionamiento correcto.</p>
     <p>El estrés físico, químico o emocional del día a día desplaza ligeramente las vértebras y crea interferencias. El ajuste quiropráctico libera esas interferencias, devuelve movilidad a la columna y ayuda a que tu sistema nervioso vuelva a comunicarse bien con todo tu organismo.</p>
@@ -370,47 +363,29 @@
   </div>
 </section>
 
-<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Escúchate</span><span class="ln bot"></span></div>
-
 <!-- ENFOQUE -->
+<section class="franja"><h2>La quiropráctica alivia los dolores y mejora el rendimiento</h2></section>
 <section id="enfoque" class="pad enfoque">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Un enfoque integral</span>
-      <h2>La quiropráctica alivia los dolores y mejora el rendimiento</h2>
-      <p>No se queda en lo puntual: ayuda a que tu cuerpo funcione mejor, de forma natural, para que rindas más y hagas lo que más te gusta. Cuando la columna está alineada, todo tu organismo lo nota.</p>
-    </div>
-    <div class="beam beam-benef">
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a7 7 0 0 1-7-7c0-4 3-9 10-11 1 4-1 8-3 10a12 12 0 0 1-6 4Z"/><path d="M4.5 14.5c3-1 5-3 8-7"/></svg><span>Menos rigidez</span></div>
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><path d="M12 8v6m-4 6 4-6 4 6M8 11h8"/></svg><span>Más movilidad</span></div>
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>Sistema inmune fuerte</span></div>
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg><span>Aumenta la energía</span></div>
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 4A5 5 0 0 1 12 7a5 5 0 0 1 6.6-3c3.4.5 4.9 4 3.4 7.7C19.5 15.4 12 20 12 20Z"/></svg><span>Disminuye el estrés</span></div>
-      <div class="it"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v9m0 0-3 5m3-5 3 5M7 10.5h10"/></svg><span>Mejora tu postura</span></div>
-    </div>
+    <p style="max-width:64ch;margin-bottom:34px">No se queda en lo puntual: ayuda a que tu cuerpo funcione mejor, de forma natural, para que rindas más y hagas lo que más te gusta. Cuando la columna está alineada, todo tu organismo lo nota.</p>
     <div class="scene">
       <img class="active" src="assets/img/marco-volver-vivir.webp" alt="Filosofía de CONTACTO Quiropráctico: un cuerpo en equilibrio funciona mejor, vive mejor">
       <img src="assets/img/consulta-espera.png" alt="Rincón de espera de CONTACTO Quiropráctico, El Prat de Llobregat">
       <img src="assets/img/consulta-camilla.png" alt="Sala de consulta de CONTACTO Quiropráctico, El Prat de Llobregat">
     </div>
-    <p class="scene-quote">Tu cuerpo tiene una gran capacidad de sanar. Nosotros te ayudamos a desbloquearla.</p>
   </div>
 </section>
 
-<!-- LÁMINA SENTENCIA 2 -->
+<!-- LÁMINA PÓSTER 2 · VOLVER A VIVIR -->
 <section class="laminaz">
-  <img src="assets/img/silueta-vivir.webp?v=2" alt="">
-  <p>Volver a vivir</p>
-  <small>Contacto · Quiropráctica</small>
+  <span class="cap">Volver a vivir</span>
+  <img src="assets/img/silueta-vivir.webp?v=2" alt="Ilustración de marca: volver a vivir">
 </section>
 
 <!-- SUBLUXACIONES -->
+<section class="franja"><h2>¿Qué son las subluxaciones?</h2></section>
 <section id="subluxaciones" class="pad prose">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">El origen del desequilibrio</span>
-      <h2>¿Qué son las subluxaciones?</h2>
-    </div>
     <p class="lead">Una subluxación es una vértebra que ha perdido su posición natural y crea una interferencia en el sistema nervioso. Es como una mala costumbre: cuanto más tiempo la arrastras, más esfuerzo cuesta corregirla.</p>
     <p>Se acumulan por distintos tipos de estrés que sufrimos casi sin darnos cuenta:</p>
     <div class="cardgrid">
@@ -423,15 +398,9 @@
   </div>
 </section>
 
-<div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Con las manos</span><span class="ln bot"></span></div>
-
+<section class="franja"><span class="kick">Cómo funciona</span><h2>Tu primera visita, paso a paso</h2><p>Sin sorpresas ni tecnicismos: así es el camino desde que entras hasta que tu cuerpo vuelve a funcionar mejor.</p></section>
 <section id="proceso" class="pad">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Cómo funciona</span>
-      <h2>Tu primera visita, paso a paso</h2>
-      <p>Sin sorpresas ni tecnicismos: así es el camino desde que entras hasta que tu cuerpo vuelve a funcionar mejor.</p>
-    </div>
     <div class="steps">
       <div class="s">
         <span class="num"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="m9.5 13 2 2 4-4"/></svg></span>
@@ -449,24 +418,20 @@
   </div>
 </section>
 
-<!-- LÁMINA SENTENCIA 3 -->
-<section class="laminaz">
-  <img src="assets/img/silueta-reir.webp?v=2" alt="">
-  <p>Volver a reír</p>
-  <small>Contacto · Quiropráctica</small>
+<!-- PÓSTER FRASE COMPLETA (frase por frase, como el cartel) -->
+<section class="lamina-text">
+  <p>Cuando<br>ajustas<br>tu columna,<br>equilibras tu<br>organismo.<br><br>Vuelve<br>a sentirte<br>bien.</p>
 </section>
 
-<div class="quote-band">
-  <blockquote>“Volver a sentirte bien es el primer paso para volver a vivir.”</blockquote>
-  <cite>Contacto Quiropráctico</cite>
-</div>
+<!-- LÁMINA PÓSTER 3 · VOLVER A SENTIRSE BIEN -->
+<section class="laminaz">
+  <span class="cap">Volver a sentirse bien</span>
+  <img src="assets/img/silueta-sentirse-bien.webp?v=2" alt="Ilustración de marca: volver a sentirse bien">
+</section>
 
+<section class="franja"><span class="kick">Reseñas verificadas</span><h2>Nos lo dicen quienes ya han venido</h2></section>
 <section id="resenas" class="pad">
   <div class="wrap">
-    <div class="head" style="margin:0 auto 34px;text-align:center">
-      <span class="eyebrow">Reseñas verificadas</span>
-      <h2>Nos lo dicen quienes ya han venido</h2>
-    </div>
     <div class="reviews">
       <div class="rcard">
         <span class="stars">★★★★★</span>
@@ -491,17 +456,13 @@
 <div class="vsep" aria-hidden="true"><span class="ln top"></span><span class="disc"></span><span class="msg">Te esperamos</span><span class="ln bot"></span></div>
 
 <!-- CONTACTO -->
-<section id="contacto" class="pad contacto">
+<section id="contacto" class="franja"><span class="kick"><b>Con</b>tacta</span><h2>Estamos aquí para ayudarte</h2><p>Si tienes cualquier duda o quieres reservar una cita, puedes ponerte en contacto con nosotros. Estaremos encantados de atenderte.</p></section>
+<section class="pad contacto">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Contacta</span>
-      <h2>Estamos aquí para ayudarte</h2>
-      <p>Si tienes cualquier duda o quieres reservar una cita, puedes ponerte en contacto con nosotros. Estaremos encantados de atenderte.</p>
-    </div>
     <div class="clist">
-      <a href="tel:+34678730876">
+      <a href="tel:+34611459510">
         <span class="ic"><img src="assets/img/ic-phone.png" alt=""></span>
-        <span>678 730 876</span>
+        <span>611 45 95 10</span>
       </a>
       <a href="https://www.google.com/maps?q=Carretera+de+la+Marina,+El+Prat+de+Llobregat" target="_blank" rel="noopener noreferrer">
         <span class="ic"><img src="assets/img/ic-pin.png" alt=""></span>
@@ -512,7 +473,7 @@
         <span>info@contactoquiropractico.es</span>
       </a>
     </div>
-    <a class="btn btn-solid" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
+    <a class="btn btn-solid" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer">Reserva tu cita →</a>
     <div class="map">
       <iframe src="https://www.google.com/maps?q=Carretera+de+la+Marina+9,+08820+El+Prat+de+Llobregat&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa — Carretera de la Marina 9, El Prat de Llobregat"></iframe>
     </div>
@@ -529,17 +490,16 @@
   <div class="foot-rule"></div>
   <nav class="footnav">
     <a href="index.html">Inicio</a>
-    <a href="#sobre-nosotros">Sobre nosotros</a>
     <a href="quiropractica-limpia.html">Quiropráctica</a>
     <a href="pilates-limpia.html">Pilates</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#contacto"><b>Con</b>tacto</a>
   </nav>
-  <p class="foot-contact"><a href="mailto:info@contactoquiropractico.es">info@contactoquiropractico.es</a><span class="sep">·</span><a href="tel:+34678730876">678 730 876</a></p>
+  <p class="foot-contact"><a href="mailto:info@contactoquiropractico.es">info@contactoquiropractico.es</a><span class="sep">·</span><a href="tel:+34611459510">611 45 95 10</a></p>
   <div class="foot-rule2"></div>
   <p class="foot-base">Tu salud. En buenas manos.</p>
 </footer>
 
-<a id="wa" href="https://wa.me/34678730876?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<a id="wa" href="https://wa.me/34611459510?text=Hola%2C%20quiero%20reservar%20una%20cita" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.7.9 3.6 1.4 5.5 1.4h.3C24.6 28.9 30 23.5 30 16.9 30 9.4 24.6 3 16 3zm7 17.1c-.3.9-1.8 1.7-2.5 1.8-.6.1-1.4.1-2.3-.1-.5-.2-1.2-.4-2.1-.8-3.7-1.6-6.1-5.3-6.3-5.6-.2-.3-1.5-2-1.5-3.8s.9-2.7 1.3-3.1c.3-.3.7-.4 1-.4h.7c.2 0 .5 0 .8.6l1.1 2.6c.1.2.2.5 0 .8l-.5.7c-.2.2-.4.5-.2.9.3.5 1.1 1.8 2.3 2.9 1.6 1.4 2.8 1.8 3.2 2 .3.1.6.1.8-.1.2-.3.9-1.1 1.2-1.4.2-.3.5-.3.8-.2l2.5 1.2c.4.2.6.3.7.4.1.3.1.9-.2 1.7z"/></svg>
 </a>
 
